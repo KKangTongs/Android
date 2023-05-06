@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    // universe
+    <color name="blackHole">#010101</color>
+    <color name="space_dark">#0F143A</color>
+    <color name="space_bright">#22195E</color>
+    <color name="violet">#BEBADC</color>
+    <color name="space_item">#554A97</color>
+
+    // blue theme
+    <color name="blue_Background">#EFF3FF</color>
+    <color name="blue_Main">#5E40F8</color>
+    <color name="blue_violet">#9385FF</color>
+
+</resources>
