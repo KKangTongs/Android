@@ -29,9 +29,9 @@
         android:id="@+id/blueHome_introGreeting_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, KKangTongs!"
+        android:text="안녕하세요, 깡통 팀입니다."
         android:textColor="@color/black"
-        android:textSize="35sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +45,7 @@
         android:text="Mobile Programming TermProject"
         app:layout_constraintStart_toStartOf="@id/blueHome_introGreeting_tv"
         app:layout_constraintTop_toBottomOf="@id/blueHome_introGreeting_tv"
-        android:textSize="20sp"/>
+        android:textSize="15sp"/>
 
     <HorizontalScrollView
         android:id="@+id/blueHome_menu_sv"
@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AI 공학관"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="비전타워"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
@@ -119,8 +119,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="IT 융합대학"
-                    android:textSize="18sp"
+                    android:text="산학협력관2"
+                    android:textSize="15sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
@@ -133,7 +133,7 @@
                 android:layout_height="40dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintStart_toEndOf="@id/blueHome_category3_cv"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/blueHome_category5_cv"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="20dp">
@@ -142,7 +142,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="가천관"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/blueHome_category5_cv"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintStart_toEndOf="@id/blueHome_category4_cv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="바이오나노대학"
+                    android:textSize="15sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
@@ -170,11 +193,11 @@
         android:id="@+id/blueHome_task_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="강의실"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="23sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/blueHome_introGreeting_tv"
         app:layout_constraintTop_toBottomOf="@id/blueHome_itemViewpager_rv"/>
 

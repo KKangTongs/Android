@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -14,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     HomeFragment homeFragment;
     MyPageFragment myPageFragment;
-    SearchFragment searchFragment;
+    LectureRoomFragment lectureRoomFragment;
 
 
     @Override
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         homeFragment = new HomeFragment();
-        searchFragment = new SearchFragment();
+        lectureRoomFragment = new LectureRoomFragment();
         myPageFragment = new MyPageFragment();
 
         // 초기화면을 홈 탭으로 설정
@@ -40,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.homeFragment:
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_frm, homeFragment).commit();
                         return true;
-                    case R.id.searchFragment:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frm, searchFragment).commit();
+                    case R.id.lectureRoomFragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_frm, lectureRoomFragment).commit();
                         return true;
                     case R.id.myPageFragment:
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_frm, myPageFragment).commit();
