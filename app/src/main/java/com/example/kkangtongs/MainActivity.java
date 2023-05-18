@@ -32,20 +32,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<JSONArray> gachon_gwan = new ArrayList<>();  //
-        ArrayList<JSONArray> AI_gwan = new ArrayList<>();  //
-        ArrayList<JSONArray> vision_tower = new ArrayList<>();  //
-        ArrayList<JSONArray> bio_yeongu = new ArrayList<>();  //
-        ArrayList<JSONArray> bio_nano_dae = new ArrayList<>();  //
-        ArrayList<JSONArray> sanhak_hyeop2 = new ArrayList<>();  //
-        ArrayList<JSONArray> sanhak_hyeop = new ArrayList<>();  //
-        ArrayList<JSONArray> gyoyook_dae = new ArrayList<>();  //
-        ArrayList<JSONArray> gongghwa2 = new ArrayList<>();  //
-        ArrayList<JSONArray> gongghwa1 = new ArrayList<>();  //
-        ArrayList<JSONArray> yesul2 = new ArrayList<>();  //
-        ArrayList<JSONArray> yesul1 = new ArrayList<>();  //
-        ArrayList<JSONArray> global_center = new ArrayList<>();  //
-        ArrayList<JSONArray> hanuigwa = new ArrayList<>();  //
+        ArrayList<JSONArray> gachon_gwan = new ArrayList<>();  // 가천관
+        ArrayList<JSONArray> AI_gwan = new ArrayList<>();  // AI관
+        ArrayList<JSONArray> vision_tower = new ArrayList<>();  // 비전타워
+        ArrayList<JSONArray> bio_yeongu = new ArrayList<>();  // 바이오나노연구
+        ArrayList<JSONArray> bio_nano_dae = new ArrayList<>();  // 바이오나노대학
+        ArrayList<JSONArray> sanhak_hyeop2 = new ArrayList<>();  // 산학협력관2
+        ArrayList<JSONArray> sanhak_hyeop = new ArrayList<>();  // 산학협력관
+        ArrayList<JSONArray> gyoyook_daehakwon = new ArrayList<>();  // 교육대학원
+        ArrayList<JSONArray> gongghwa2 = new ArrayList<>();  // 공과대학2
+        ArrayList<JSONArray> gongghwa1 = new ArrayList<>();  // 공과대학1
+        ArrayList<JSONArray> yesul2 = new ArrayList<>();  // 예술대학2
+        ArrayList<JSONArray> yesul1 = new ArrayList<>();  // 예술대학1
+        ArrayList<JSONArray> global_center = new ArrayList<>();  // 글로벌센터
+        ArrayList<JSONArray> hanuigwa = new ArrayList<>();  // 한의과대학
 
         try {
             JSONArray jsonArray = new JSONArray(loadJSONFromAsset(getApplicationContext(), "gachon_timetable.json")); // jsonString은 주어진 JSON 문자열입니다.
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     sanhak_hyeop.add(innerArray);
                 }
                 if (value.contains("교육대학원")) {
-                    gyoyook_dae.add(innerArray);
+                    gyoyook_daehakwon.add(innerArray);
                 }
                 if (value.contains("공과대학2")) {
                     gongghwa2.add(innerArray);
