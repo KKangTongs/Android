@@ -19,4 +19,6 @@ public class AiFragment extends Fragment {
 
         return rootView;
     }
+
+
 }

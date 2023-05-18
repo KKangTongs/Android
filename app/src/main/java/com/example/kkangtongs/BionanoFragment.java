@@ -19,4 +19,8 @@ public class BionanoFragment extends Fragment {
 
         return rootView;
     }
+
+
+
+
 }
