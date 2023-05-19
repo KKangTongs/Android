@@ -46,6 +46,164 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ai_2f_cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ai_1f_rv"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2F"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:background="@color/blue_Background"/>
+
+        <ImageView
+            android:id="@+id/ai_2f_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/arrow_square"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ai_2f_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ai_2f_cv"
+        android:layout_margin="5dp"
+        tools:listitem="@layout/item_blue_task"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ai_3f_cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ai_2f_rv"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3F"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:background="@color/blue_Background"/>
+
+        <ImageView
+            android:id="@+id/ai_3f_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/arrow_square"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ai_3f_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ai_3f_cv"
+        android:layout_margin="5dp"
+        tools:listitem="@layout/item_blue_task"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ai_4f_cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ai_3f_rv"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4F"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:background="@color/blue_Background"/>
+
+        <ImageView
+            android:id="@+id/ai_4f_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/arrow_square"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ai_4f_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ai_4f_cv"
+        android:layout_margin="5dp"
+        tools:listitem="@layout/item_blue_task"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ai_5f_cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ai_4f_rv"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5F"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:background="@color/blue_Background"/>
+
+        <ImageView
+            android:id="@+id/ai_5f_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/arrow_square"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ai_5f_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ai_5f_cv"
+        android:layout_margin="5dp"
+        tools:listitem="@layout/item_blue_task"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
