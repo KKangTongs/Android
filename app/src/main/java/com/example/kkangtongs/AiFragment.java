@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public class AiFragment extends Fragment {
@@ -152,6 +155,7 @@ public class AiFragment extends Fragment {
         roomList_5f.setAdapter(adapter_5f);
     }
 
+    /*
     private void addRoomList() {
         // 더미 데이터 테스트 코드
 
@@ -182,7 +186,128 @@ public class AiFragment extends Fragment {
         adapter_3f.notifyDataSetChanged();
         adapter_4f.notifyDataSetChanged();
         adapter_5f.notifyDataSetChanged();
+    } */
+
+    private void addRoomList() {
+        // 더미 데이터 대신 MainActivity에서 가져온 데이터 사용
+        for (JSONArray innerArray : MainActivity.AI_gwan) {
+            try {
+                // 강의실 이름 - 호수
+                String roomNameNumber = innerArray.getString(6);
+                // 강의 요일 - 시간
+                String roomDayTime = innerArray.getString(5);
+
+                // 한 강의에 강의실 2개 쓰는 경우
+                if (roomNameNumber.contains(",")){
+
+                    String[] courseParts = roomNameNumber.split(",");// AI관-1호, AI관-2호
+
+                    String roomNameNumber1 = courseParts[0];
+                    String roomNameNumber2 = courseParts[1]; // AI관-2호
+
+                    String[] roomParts1 = roomNameNumber1.split("-");
+                    String[] roomParts2 = roomNameNumber2.split("-");
+
+                    String roomName1 = roomParts1[0]; // ai관
+                    String roomNumber1 = roomParts1[1]; // 1
+                    String roomName2 = roomParts2[0];
+                    String roomNumber2 = roomParts2[1];
+
+                    // 강의 일주일에 2번
+                   if (roomDayTime.length() == 6){
+                       String[] dayTimePart = roomDayTime.split(" ,");
+                       String dayTime1 = dayTimePart[0];
+                       String dayTime2 = dayTimePart[0];
+
+                       String day1 = dayTime1.substring(0, 1); // 수
+                       String time1 = dayTime1.substring(1); // 1
+
+                       String day2 = dayTime2.substring(0, 1);
+                       String time2 = dayTime2.substring(1);
+
+                       if (roomNumber1.startsWith("1")) {
+                           roomData_1f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_1f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       } else if (roomNumber1.startsWith("2")) {
+                           roomData_2f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_2f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       } else if (roomNumber1.startsWith("3")) {
+                           roomData_3f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_3f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       } else if (roomNumber1.startsWith("4")) {
+                           roomData_4f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_4f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       } else if (roomNumber1.startsWith("5")) {
+                           roomData_5f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_5f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       }
+
+                       if (roomNumber2.startsWith("1")) {
+                           roomData_1f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_1f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       } else if (roomNumber2.startsWith("2")) {
+                           roomData_2f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_2f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       } else if (roomNumber2.startsWith("3")) {
+                           roomData_3f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_3f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       } else if (roomNumber2.startsWith("4")) {
+                           roomData_4f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_4f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       } else if (roomNumber2.startsWith("5")) {
+                           roomData_5f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+                           roomData_5f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                       }
+                    }
+
+
+
+                }else if (roomDayTime.length() == 6){ // 강의실 1개, 강의 일주일에 두번
+
+                    String[] roomParts = roomNameNumber.split("-");
+                    String[] dayTimePart = roomDayTime.split(" ,");
+                    String dayTime1 = dayTimePart[0]; // 수1
+                    String dayTime2 = dayTimePart[0]; // 수2
+
+                    String roomName = roomParts[0];
+                    String roomNumber = roomParts[1];
+
+                    String day1 = dayTime1.substring(0, 1); // 수
+                    String time1 = dayTime1.substring(1); // 1
+
+                    String day2 = dayTime2.substring(0, 1);
+                    String time2 = dayTime2.substring(1);
+
+                    if (roomNumber.startsWith("1")) {
+                        roomData_1f.add(new RoomItem(roomName, roomNumber, day1, time1));
+                        roomData_1f.add(new RoomItem(roomName, roomNumber, day2, time2));
+                    } else if (roomNumber.startsWith("2")) {
+                        roomData_2f.add(new RoomItem(roomName, roomNumber, day1, time1));
+                        roomData_2f.add(new RoomItem(roomName, roomNumber, day2, time2));
+                    } else if (roomNumber.startsWith("3")) {
+                        roomData_3f.add(new RoomItem(roomName, roomNumber, day1, time1));
+                        roomData_3f.add(new RoomItem(roomName, roomNumber, day2, time2));
+                    } else if (roomNumber.startsWith("4")) {
+                        roomData_4f.add(new RoomItem(roomName, roomNumber, day1, time1));
+                        roomData_4f.add(new RoomItem(roomName, roomNumber, day2, time2));
+                    } else if (roomNumber.startsWith("5")) {
+                        roomData_5f.add(new RoomItem(roomName, roomNumber, day1, time1));
+                        roomData_5f.add(new RoomItem(roomName, roomNumber, day2, time2));
+                    }
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // 나머지 층도 동일한 방식으로 데이터 추가
+
+        // 데이터 변경사항 알리는 코드
+        adapter_1f.notifyDataSetChanged();
+        // 나머지 어댑터에 대해서도 notifyDataSetChanged() 호출
     }
+
 
     @Override
     public void onStart() {

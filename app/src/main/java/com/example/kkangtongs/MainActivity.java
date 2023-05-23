@@ -20,11 +20,27 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class MainActivity extends AppCompatActivity {
 
     HomeFragment homeFragment;
     MyPageFragment myPageFragment;
     LectureRoomFragment lectureRoomFragment;
+
+    public static ArrayList<JSONArray> gachon_gwan;  // 가천관
+    public static ArrayList<JSONArray> AI_gwan;  // AI관
+    public static ArrayList<JSONArray> vision_tower;  // 비전타워
+    public static ArrayList<JSONArray> bio_yeongu;  // 바이오나노연구
+    public static ArrayList<JSONArray> bio_nano_dae;  // 바이오나노대학
+    public static ArrayList<JSONArray> sanhak_hyeop2;  // 산학협력관2
+    public static ArrayList<JSONArray> sanhak_hyeop;  // 산학협력관
+    public static ArrayList<JSONArray> gyoyook_daehakwon;  // 교육대학원
+    public static ArrayList<JSONArray> gongghwa2;  // 공과대학2
+    public static ArrayList<JSONArray> gongghwa1;  // 공과대학1
+    public static ArrayList<JSONArray> yesul2;  // 예술대학2
+    public static ArrayList<JSONArray> yesul1;  // 예술대학1
+    public static ArrayList<JSONArray> global_center;  // 글로벌센터
+    public static ArrayList<JSONArray> hanuigwa; // 한의과대학
 
 
     @Override
@@ -32,20 +48,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<JSONArray> gachon_gwan = new ArrayList<>();  // 가천관
-        ArrayList<JSONArray> AI_gwan = new ArrayList<>();  // AI관
-        ArrayList<JSONArray> vision_tower = new ArrayList<>();  // 비전타워
-        ArrayList<JSONArray> bio_yeongu = new ArrayList<>();  // 바이오나노연구
-        ArrayList<JSONArray> bio_nano_dae = new ArrayList<>();  // 바이오나노대학
-        ArrayList<JSONArray> sanhak_hyeop2 = new ArrayList<>();  // 산학협력관2
-        ArrayList<JSONArray> sanhak_hyeop = new ArrayList<>();  // 산학협력관
-        ArrayList<JSONArray> gyoyook_daehakwon = new ArrayList<>();  // 교육대학원
-        ArrayList<JSONArray> gongghwa2 = new ArrayList<>();  // 공과대학2
-        ArrayList<JSONArray> gongghwa1 = new ArrayList<>();  // 공과대학1
-        ArrayList<JSONArray> yesul2 = new ArrayList<>();  // 예술대학2
-        ArrayList<JSONArray> yesul1 = new ArrayList<>();  // 예술대학1
-        ArrayList<JSONArray> global_center = new ArrayList<>();  // 글로벌센터
-        ArrayList<JSONArray> hanuigwa = new ArrayList<>();  // 한의과대학
+        gachon_gwan = new ArrayList<>();  // 가천관
+        AI_gwan = new ArrayList<>();  // AI관
+        vision_tower = new ArrayList<>();  // 비전타워
+        bio_yeongu = new ArrayList<>();  // 바이오나노연구
+        bio_nano_dae = new ArrayList<>();  // 바이오나노대학
+        sanhak_hyeop2 = new ArrayList<>();  // 산학협력관2
+        sanhak_hyeop = new ArrayList<>();  // 산학협력관
+        gyoyook_daehakwon = new ArrayList<>();  // 교육대학원
+        gongghwa2 = new ArrayList<>();  // 공과대학2
+        gongghwa1 = new ArrayList<>();  // 공과대학1
+        yesul2 = new ArrayList<>();  // 예술대학2
+        yesul1 = new ArrayList<>();  // 예술대학1
+        global_center = new ArrayList<>();  // 글로벌센터
+        hanuigwa = new ArrayList<>();  // 한의과대학
 
         try {
             JSONArray jsonArray = new JSONArray(loadJSONFromAsset(getApplicationContext(), "gachon_timetable.json")); // jsonString은 주어진 JSON 문자열입니다.
@@ -55,46 +71,46 @@ public class MainActivity extends AppCompatActivity {
                 String value = innerArray.getString(6); // 8번째 인덱스 값 가져오기 (인덱스는 0부터 시작하므로 7을 사용)
 
                 if (value.contains("가천관")) {
-                    gachon_gwan.add(innerArray);
+                    MainActivity.gachon_gwan.add(innerArray);
                 }
                 if (value.contains("AI")) {
-                    AI_gwan.add(innerArray);
+                    MainActivity.AI_gwan.add(innerArray);
                 }
                 if (value.contains("비전타워")) {
-                    vision_tower.add(innerArray);
+                    MainActivity.vision_tower.add(innerArray);
                 }
                 if (value.contains("바이오나노연구")) {
-                    bio_yeongu.add(innerArray);
+                    MainActivity.bio_yeongu.add(innerArray);
                 }
                 if (value.contains("바이오나노대학")) {
-                    bio_nano_dae.add(innerArray);
+                    MainActivity.bio_nano_dae.add(innerArray);
                 }
                 if (value.contains("산학협력관2")) {
-                    sanhak_hyeop2.add(innerArray);
+                    MainActivity.sanhak_hyeop2.add(innerArray);
                 }
                 if (value.contains("산학협력관-")) {
-                    sanhak_hyeop.add(innerArray);
+                    MainActivity.sanhak_hyeop.add(innerArray);
                 }
                 if (value.contains("교육대학원")) {
-                    gyoyook_daehakwon.add(innerArray);
+                    MainActivity.gyoyook_daehakwon.add(innerArray);
                 }
                 if (value.contains("공과대학2")) {
-                    gongghwa2.add(innerArray);
+                    MainActivity.gongghwa2.add(innerArray);
                 }
                 if (value.contains("공과대학1")) {
-                    gongghwa1.add(innerArray);
+                    MainActivity.gongghwa1.add(innerArray);
                 }
                 if (value.contains("예술대학2")) {
-                    yesul2.add(innerArray);
+                    MainActivity.yesul2.add(innerArray);
                 }
                 if (value.contains("예술대학1")) {
-                    yesul1.add(innerArray);
+                    MainActivity.yesul1.add(innerArray);
                 }
                 if (value.contains("글로벌센터")) {
-                    global_center.add(innerArray);
+                    MainActivity.global_center.add(innerArray);
                 }
                 if (value.contains("한의과대학")) {
-                    hanuigwa.add(innerArray);
+                    MainActivity.hanuigwa.add(innerArray);
                 }
             }
 
