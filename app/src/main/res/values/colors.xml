@@ -20,5 +20,6 @@
     <color name="blue_Background">#EFF3FF</color>
     <color name="blue_Main">#5E40F8</color>
     <color name="blue_violet">#9385FF</color>
+    <color name="violet_transparent">#1A9385FF</color>
 
 </resources>

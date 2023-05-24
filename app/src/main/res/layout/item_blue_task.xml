@@ -5,43 +5,43 @@
     android:background="@drawable/rounding_item"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+<!--    <View-->
+<!--        android:id="@+id/rootItem_bar_vw"-->
+<!--        android:layout_width="3dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/blue_violet"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginBottom="10dp"/>-->
 
     <TextView
         android:id="@+id/roomItem_roomNumber_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Task Name"
+        android:text="Room Number"
         android:textSize="15sp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/roomItem_buildingName_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginStart="10dp"/>
+        app:layout_constraintBottom_toTopOf="@id/roomItem_buildingName_tv"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:id="@+id/roomItem_buildingName_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Building"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/roomItem_roomNumber_tv"
-        app:layout_constraintTop_toTopOf="@id/roomItem_roomNumber_tv"
-        app:layout_constraintBottom_toBottomOf="@id/roomItem_roomNumber_tv"
-        android:layout_marginStart="20dp"/>
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/roomItem_roomNumber_tv"
+        app:layout_constraintStart_toStartOf="@id/roomItem_roomNumber_tv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="5dp"/>
 
-    <View
-        android:id="@+id/rootItem_bar_vw"
-        android:layout_width="3dp"
-        android:layout_height="match_parent"
-        android:background="@color/blue_violet"
-        app:layout_constraintStart_toEndOf="@id/roomItem_roomNumber_tv"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/roomItem_remainTime_tv"
@@ -51,9 +51,11 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="15sp"
-        app:layout_constraintTop_toTopOf="@id/rootItem_bar_vw"
-        app:layout_constraintBottom_toBottomOf="@id/rootItem_bar_vw"
-        app:layout_constraintStart_toEndOf="@id/rootItem_bar_vw"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:background="@color/violet_transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
