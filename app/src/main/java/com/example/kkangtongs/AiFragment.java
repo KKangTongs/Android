@@ -305,6 +305,11 @@ public class AiFragment extends Fragment {
 
         // 데이터 변경사항 알리는 코드
         adapter_1f.notifyDataSetChanged();
+        adapter_2f.notifyDataSetChanged();
+        adapter_3f.notifyDataSetChanged();
+        adapter_4f.notifyDataSetChanged();
+        adapter_5f.notifyDataSetChanged();
+
         // 나머지 어댑터에 대해서도 notifyDataSetChanged() 호출
     }
 
@@ -312,7 +317,6 @@ public class AiFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
 
     }
 }
