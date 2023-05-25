@@ -17,17 +17,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="B2"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
-            android:background="@color/blue_Background"/>
+            android:background="@color/blue_violet"/>
 
         <ImageView
             android:id="@+id/vision_B2_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/arrow_square"
+            android:src="@drawable/arrow_square_white"
             android:layout_gravity="end|center_vertical"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"/>
@@ -57,17 +57,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="B1"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
-            android:background="@color/blue_Background"/>
+            android:background="@color/blue_violet"/>
 
         <ImageView
             android:id="@+id/vision_B1_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/arrow_square"
+            android:src="@drawable/arrow_square_white"
             android:layout_gravity="end|center_vertical"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"/>
@@ -97,17 +97,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1F"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
-            android:background="@color/blue_Background"/>
+            android:background="@color/blue_violet"/>
 
         <ImageView
             android:id="@+id/vision_1f_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/arrow_square"
+            android:src="@drawable/arrow_square_white"
             android:layout_gravity="end|center_vertical"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"/>
@@ -137,17 +137,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2F"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
-            android:background="@color/blue_Background"/>
+            android:background="@color/blue_violet"/>
 
         <ImageView
             android:id="@+id/vision_2f_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/arrow_square"
+            android:src="@drawable/arrow_square_white"
             android:layout_gravity="end|center_vertical"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"/>
@@ -177,17 +177,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="3F"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
-            android:background="@color/blue_Background"/>
+            android:background="@color/blue_violet"/>
 
         <ImageView
             android:id="@+id/vision_3f_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/arrow_square"
+            android:src="@drawable/arrow_square_white"
             android:layout_gravity="end|center_vertical"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"/>
@@ -218,17 +218,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="4F"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
-            android:background="@color/blue_Background"/>
+            android:background="@color/blue_violet"/>
 
         <ImageView
             android:id="@+id/vision_4f_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/arrow_square"
+            android:src="@drawable/arrow_square_white"
             android:layout_gravity="end|center_vertical"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"/>
@@ -258,17 +258,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="5F"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
-            android:background="@color/blue_Background"/>
+            android:background="@color/blue_violet"/>
 
         <ImageView
             android:id="@+id/vision_5f_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/arrow_square"
+            android:src="@drawable/arrow_square_white"
             android:layout_gravity="end|center_vertical"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"/>
@@ -298,17 +298,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="6F"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
-            android:background="@color/blue_Background"/>
+            android:background="@color/blue_violet"/>
 
         <ImageView
             android:id="@+id/vision_6f_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/arrow_square"
+            android:src="@drawable/arrow_square_white"
             android:layout_gravity="end|center_vertical"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"/>
