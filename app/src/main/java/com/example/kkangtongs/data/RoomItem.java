@@ -1,4 +1,4 @@
-package com.example.kkangtongs;
+package com.example.kkangtongs.data;
 
 public class RoomItem {
 

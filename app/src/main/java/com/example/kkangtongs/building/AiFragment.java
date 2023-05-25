@@ -1,4 +1,4 @@
-package com.example.kkangtongs;
+package com.example.kkangtongs.building;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kkangtongs.MainActivity;
+import com.example.kkangtongs.R;
+import com.example.kkangtongs.data.RoomItem;
+import com.example.kkangtongs.adapter.RoomListRVAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,8 +57,8 @@ public class AiFragment extends Fragment {
         // RecyclerView & Adapter 관련 코드
         initRecyclerView();
 
-        // 층별 데이터 추가
-        addRoomList();
+        // 층별 강의실 데이터 세팅
+        setRoomList();
 
 
         // 층별 화살표에 대한 Click Listener
@@ -188,7 +193,7 @@ public class AiFragment extends Fragment {
         adapter_5f.notifyDataSetChanged();
     } */
 
-    private void addRoomList() {
+    private void setRoomList() {
         // 더미 데이터 대신 MainActivity에서 가져온 데이터 사용
         for (JSONArray innerArray : MainActivity.AI_gwan) {
             try {

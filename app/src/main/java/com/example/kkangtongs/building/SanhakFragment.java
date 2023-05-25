@@ -1,4 +1,4 @@
-package com.example.kkangtongs;
+package com.example.kkangtongs.building;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,18 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class BionanoFragment extends Fragment {
+import com.example.kkangtongs.R;
+
+public class SanhakFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_bionano, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_sanhak, container, false);
 
         return rootView;
     }
-
-
-
-
 }

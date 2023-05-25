@@ -1,9 +1,15 @@
-package com.example.kkangtongs;
+package com.example.kkangtongs.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import com.example.kkangtongs.building.AiFragment;
+import com.example.kkangtongs.building.BionanoFragment;
+import com.example.kkangtongs.building.GachongwanFragment;
+import com.example.kkangtongs.building.SanhakFragment;
+import com.example.kkangtongs.building.VisionTowerFragment;
 
 public class ContentsPagerAdapter extends FragmentStateAdapter {
 
