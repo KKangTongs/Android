@@ -3,9 +3,7 @@ package com.example.kkangtongs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Debug;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -15,13 +13,7 @@ import com.example.kkangtongs.main.LectureRoomFragment;
 import com.example.kkangtongs.main.MyPageFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,9 +36,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        ArrayList<RoomItem> roomItems = RoomItemProcessor.processJSONArray(getApplicationContext());
+        ArrayList<RoomItem> gachon_gwan = RoomItemProcessor.roomNameToRoomArray(getApplicationContext(), "가천관");
+        ArrayList<RoomItem> ai_gwan = RoomItemProcessor.roomNameToRoomArray(getApplicationContext(), "AI관");
 
-        Log.d("roomItems", roomItems.toString());
+        Log.d("roomItems", gachon_gwan.toString());
 
 
         homeFragment = new HomeFragment();
