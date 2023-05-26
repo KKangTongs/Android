@@ -318,6 +318,14 @@ public class AiFragment extends Fragment {
         // 나머지 어댑터에 대해서도 notifyDataSetChanged() 호출
     }
 
+    public void isWithinRange(String currentTime, String time){
+        if (time.equals("1")){
+            String startT = "09:00"
+        }
+
+    }
+
+
 
     @Override
     public void onStart() {

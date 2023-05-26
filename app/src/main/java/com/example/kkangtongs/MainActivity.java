@@ -20,6 +20,8 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<JSONArray> yesul1;  // 예술대학1
     public static ArrayList<JSONArray> global_center;  // 글로벌센터
     public static ArrayList<JSONArray> hanuigwa; // 한의과대학
+
+    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    public String currentTime = dateFormat.format(new Date());
 
 
     @Override
