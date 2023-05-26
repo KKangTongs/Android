@@ -8,6 +8,9 @@ public class RoomItem {
     String day;
 
     String time;
+
+
+
     /*
     public RoomItem(String buildingName, String roomNumber, String remainTime) {
         this.buildingName = buildingName;
