@@ -88,20 +88,18 @@ public class AiFragment extends Fragment {
 
         int minRemainTime = 9999;
 
-        for(RoomItem roomItem : ai_gwan) {
-            try {
-                if (isWithinRange(currentTime, roomItem.getTime())){
-                    continue;
-                } else if {
-
-                }
-
-
-
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        }
+//        for(RoomItem roomItem : ai_gwan) {
+//            try {
+//                if (isWithinRange(currentTime, roomItem.getTime())){
+//                    continue;
+//                }
+//
+//
+//
+//            } catch (ParseException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
 
 
 
@@ -264,7 +262,8 @@ public class AiFragment extends Fragment {
         Date startTimeObj = timeFormat.parse(startT);
         Date endTimeObj = timeFormat.parse(endT);
 
-        return currentTimeObj - startTimeObj;
+//        return currentTimeObj - startTimeObj;
+        return null;
     }
 
     public boolean isWithinRange(String currentTime, String time) throws ParseException {
