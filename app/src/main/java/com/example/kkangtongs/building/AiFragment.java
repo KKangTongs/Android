@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kkangtongs.MainActivity;
 import com.example.kkangtongs.R;
+import com.example.kkangtongs.RoomItemProcessor;
 import com.example.kkangtongs.data.RoomItem;
 import com.example.kkangtongs.adapter.RoomListRVAdapter;
 
@@ -69,7 +70,6 @@ public class AiFragment extends Fragment {
 
         // 층별 강의실 데이터 세팅
         setRoomList();
-
 
         // 층별 화살표에 대한 Click Listener
         arrow_1f.setOnClickListener(new View.OnClickListener() {
@@ -171,9 +171,10 @@ public class AiFragment extends Fragment {
     }
 
 
+
     private void setRoomList() {
         // 더미 데이터 대신 MainActivity에서 가져온 데이터 사용
-        for (JSONArray innerArray : MainActivity.AI_gwan) {
+        for (JSONArray innerArray : RoomItemProcessor.AI_gwan) {
             try {
                 // 강의실 이름 - 호수
                 String roomNameNumber = innerArray.getString(6);
@@ -290,6 +291,7 @@ public class AiFragment extends Fragment {
         // 나머지 어댑터에 대해서도 notifyDataSetChanged() 호출
     }
 
+
     public boolean isWithinRange(String currentTime, String time) throws ParseException {
 
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
@@ -299,6 +301,7 @@ public class AiFragment extends Fragment {
         String endT = "";
 
         if (time.equals("1")){
+
             startT = "09:00";
             endT = "10:00";
         }else if (time.equals("2")){
@@ -340,6 +343,8 @@ public class AiFragment extends Fragment {
         }else if (time.equals("E")){
             startT = "16:00";
             endT = "17:15";
+
+
         }
 
         Date startTimeObj = timeFormat.parse(startT);
