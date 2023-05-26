@@ -134,7 +134,6 @@ public class RoomItemProcessor {
                 result = jsonArrToRoomitem(hanuigwa);
             }
 
-
             return result;
 
         } catch (JSONException e) {
@@ -178,7 +177,7 @@ public class RoomItemProcessor {
                     // 강의 일주일에 2번
                     String[] dayTimePart = roomDayTime.split(" ,");
                     String dayTime1 = dayTimePart[0];
-                    String dayTime2 = dayTimePart[0];
+                    String dayTime2 = dayTimePart[1];
 
                     String day1 = dayTime1.substring(0, 1); // 수
                     String time1 = dayTime1.substring(1); // 1
@@ -186,13 +185,11 @@ public class RoomItemProcessor {
                     String day2 = dayTime2.substring(0, 1);
                     String time2 = dayTime2.substring(1);
 
-                    if (currentDayOfWeek == getDayOfWeek(day1)) {
-                        result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                    }
 
-                    if (currentDayOfWeek == getDayOfWeek(day2)) {
-                        result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                    }
+                    result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
+
+                    result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+
 
                 } else { // 강의실 1개
 
@@ -206,9 +203,7 @@ public class RoomItemProcessor {
                         String day = dayTime.substring(0,1);
                         String time = dayTime.substring(1);
 
-                        if (currentDayOfWeek == getDayOfWeek(day)) {
-                            result.add(new RoomItem(roomName, roomNumber, day, time));
-                        }
+                        result.add(new RoomItem(roomName, roomNumber, day, time));
                     }
 
                 }

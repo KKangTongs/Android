@@ -4,12 +4,29 @@ public class RoomItem {
 
     String buildingName;
     String roomNumber;
-    // String remainTime;
     String day;
 
     String time;
 
+    int remainTime = 9999;
 
+    boolean inclass = false;
+
+    public void setRemainTime(int remainTime) {
+        this.remainTime = remainTime;
+    }
+
+    public void setInclass(boolean inclass) {
+        this.inclass = inclass;
+    }
+
+    public int getRemainTime() {
+        return remainTime;
+    }
+
+    public boolean isInclass() {
+        return inclass;
+    }
 
     /*
     public RoomItem(String buildingName, String roomNumber, String remainTime) {
