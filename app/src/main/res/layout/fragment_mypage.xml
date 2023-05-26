@@ -8,7 +8,6 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/myPageLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -30,6 +29,7 @@
                 <TextView style="@style/myPageSectorTitle"
                     android:text="애플리케이션 설정"/>
                 <Button style="@style/myPageButton"
+                    android:id="@+id/myPageDarkModeButton"
                     android:text="다크 모드"/>
                 <Button style="@style/myPageButton"
                     android:text="알림 설정"/>
@@ -45,9 +45,11 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <Button style="@style/myPageButton"
+                        android:id="@+id/myPageAppVersion1"
                         android:layout_weight="1"
                         android:text="앱 버전"/>
                     <Button style="@style/myPageButton"
+                        android:id="@+id/myPageAppVersion2"
                         android:layout_weight="1"
                         android:textColor="#ABABAB"
                         android:layout_marginRight="10dp"
@@ -56,11 +58,17 @@
                 </LinearLayout>
                 <!-- 여기 밑으로는 "공지사항"부터 -->
                 <Button style="@style/myPageButton"
+                    android:id="@+id/myPageAnnouncementButton"
                     android:text="공지사항"/>
                 <Button style="@style/myPageButton"
+                    android:id="@+id/myPageOpenSourceButton"
                     android:text="오픈소스 라이선스"/>
                 <Button style="@style/myPageButton"
-                    android:text="문의하기 / 오류 제보"/>
+                    android:id="@+id/myPageSupportEmailButton"
+                    android:text="문의하기"/>
+                <Button style="@style/myPageButton"
+                    android:id="@+id/myPageErrorEmailButton"
+                    android:text="오류 제보"/>
             </LinearLayout>
 
 
