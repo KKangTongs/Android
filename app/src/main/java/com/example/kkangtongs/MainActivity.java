@@ -1,5 +1,6 @@
 package com.example.kkangtongs;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<RoomItem> ai_gwan = RoomItemProcessor.roomNameToRoomArray(getApplicationContext(), "AI관");
 
         Log.d("roomItems", gachon_gwan.toString());
+        // 현재 나의 위치를 지속적으로 업데이트하는 메소드
+        LocationProcessor locationProcessor = new LocationProcessor();
+        locationProcessor.updateCurrentLocation(this);
 
-        // 지금 위치에서 제일 가까운 건물들을 정렬하여 가져옵니다.
-        List<Location> SortedBuildings = LocationProcessor.currentLocationNearestLocations(this);
 
         homeFragment = new HomeFragment();
         lectureRoomFragment = new LectureRoomFragment();
@@ -59,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                // 현재 위치에서 제일 가까운 건물들을 정렬하여 가져옵니다.
+                List<Location> SortedBuildings = locationProcessor.getNearestLocations();
+                Log.d("SortedBuildings", SortedBuildings.toString());
 
                 switch (item.getItemId()){
                     case R.id.homeFragment:

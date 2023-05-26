@@ -17,7 +17,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class LocationProcessor {
-    public static List<Location> currentLocationNearestLocations(Activity activity) {
+    Location currentLocation = new Location("current");
+    public void updateCurrentLocation(Activity activity) {
 
         try {
             LocationManager locationManager = (LocationManager) activity.getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
@@ -30,9 +31,7 @@ public class LocationProcessor {
                     double longitude = location.getLongitude();
                     // 위도(latitude)와 경도(longitude)를 이용하여 원하는 방식으로 출력
                     Log.d("MyLocation", "Latitude: " + latitude + ", Longitude: " + longitude);
-                    List<Location> near_loc = getNearestLocations(location);
-                    Log.d("MyLocation", "near_loc: " + near_loc.toString());
-                    // 위치 정보를 받아와서 건물 이름 등을 파악하고 처리하는 코드를 추가할 수 있습니다.
+                    currentLocation.set(location);
                 }
 
                 @Override
@@ -52,7 +51,6 @@ public class LocationProcessor {
             if (ActivityCompat.checkSelfPermission(activity.getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity.getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // 위치 권한이 허용되지 않은 경우 권한 요청
                 ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-                return;
             }
 
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
@@ -64,7 +62,7 @@ public class LocationProcessor {
     }
 
 
-    public static List<Location> getNearestLocations(Location currentLocation) {
+    public List<Location> getNearestLocations() {
         List<Location> locations = new ArrayList<>();
 
         // 건물 위치 좌표 추가
