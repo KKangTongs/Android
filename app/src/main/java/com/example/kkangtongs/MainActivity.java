@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<JSONArray> global_center;  // 글로벌센터
     public static ArrayList<JSONArray> hanuigwa; // 한의과대학
 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
     public String currentTime = dateFormat.format(new Date());
 
 
