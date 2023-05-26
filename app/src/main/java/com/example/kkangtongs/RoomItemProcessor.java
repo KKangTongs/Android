@@ -188,7 +188,6 @@ public class RoomItemProcessor {
 
                     if (currentDayOfWeek == getDayOfWeek(day1)) {
                         result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-
                     }
 
                     if (currentDayOfWeek == getDayOfWeek(day2)) {
@@ -211,7 +210,6 @@ public class RoomItemProcessor {
                             result.add(new RoomItem(roomName, roomNumber, day, time));
                         }
                     }
-
 
                 }
 
@@ -260,65 +258,4 @@ public class RoomItemProcessor {
     }
 
 
-
-    public boolean isWithinRange(String currentTime, String time) throws ParseException {
-
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-        Date currentTimeObj = timeFormat.parse(currentTime);
-
-        String startT = "";
-        String endT = "";
-
-        if (time.equals("1")){
-
-            startT = "09:00";
-            endT = "10:00";
-        }else if (time.equals("2")){
-            startT = "10:00";
-            endT = "11:00";
-        }else if (time.equals("3")){
-            startT = "11:00";
-            endT = "12:00";
-        }else if (time.equals("4")){
-            startT = "12:00";
-            endT = "13:00";
-        }else if (time.equals("5")){
-            startT = "13:00";
-            endT = "14:00";
-        }else if (time.equals("6")){
-            startT = "14:00";
-            endT = "15:00";
-        }else if (time.equals("7")){
-            startT = "15:00";
-            endT = "16:00";
-        }else if (time.equals("8")){
-            startT = "16:00";
-            endT = "17:00";
-        }else if (time.equals("9")){
-            startT = "17:00";
-            endT = "18:00";
-        }else if (time.equals("A")){
-            startT = "09:30";
-            endT = "10:45";
-        }else if (time.equals("B")){
-            startT = "11:00";
-            endT = "12:15";
-        }else if (time.equals("C")){
-            startT = "13:00";
-            endT = "14:15";
-        }else if (time.equals("D")){
-            startT = "14:30";
-            endT = "15:45";
-        }else if (time.equals("E")){
-            startT = "16:00";
-            endT = "17:15";
-
-
-        }
-
-        Date startTimeObj = timeFormat.parse(startT);
-        Date endTimeObj = timeFormat.parse(endT);
-
-        return currentTimeObj.after(startTimeObj) && currentTimeObj.before(endTimeObj);
-    }
 }
