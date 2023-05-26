@@ -187,12 +187,12 @@ public class RoomItemProcessor {
                     String time2 = dayTime2.substring(1);
 
                     if (currentDayOfWeek == getDayOfWeek(day1)) {
-                        result.add(new RoomItem(roomName2, roomNumber2, day2, time2);
+                        result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
 
                     }
 
                     if (currentDayOfWeek == getDayOfWeek(day2)) {
-                        result.add(new RoomItem(roomName2, roomNumber2, day2, time2);
+                        result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
                     }
 
                 } else { // 강의실 1개
@@ -208,18 +208,7 @@ public class RoomItemProcessor {
                         String time = dayTime.substring(1);
 
                         if (currentDayOfWeek == getDayOfWeek(day)) {
-                            if (roomNumber.startsWith("1")) {
-                                result.add(new RoomItem(roomName, roomNumber, day, time));
-                            } else if (roomNumber.startsWith("2")) {
-                                result.add(new RoomItem(roomName, roomNumber, day, time));
-                                Log.d("2f", roomNumber);
-                            } else if (roomNumber.startsWith("3")) {
-                                result.add(new RoomItem(roomName, roomNumber, day, time));
-                            } else if (roomNumber.startsWith("4")) {
-                                result.add(new RoomItem(roomName, roomNumber, day, time));
-                            } else if (roomNumber.startsWith("5")) {
-                                result.add(new RoomItem(roomName, roomNumber, day, time));
-                            }
+                            result.add(new RoomItem(roomName, roomNumber, day, time));
                         }
                     }
 
@@ -249,7 +238,7 @@ public class RoomItemProcessor {
         return json;
     }
 
-    private int getDayOfWeek(String day) {
+    private static int getDayOfWeek(String day) {
         switch (day) {
             case "일":
                 return 1;
