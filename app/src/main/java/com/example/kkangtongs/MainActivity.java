@@ -3,6 +3,7 @@ package com.example.kkangtongs;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("roomItems", gachon_gwan.toString());
 
+        // 지금 위치에서 제일 가까운 건물들을 정렬하여 가져옵니다.
+        List<Location> SortedBuildings = LocationProcessor.currentLocationNearestLocations(this);
 
         homeFragment = new HomeFragment();
         lectureRoomFragment = new LectureRoomFragment();

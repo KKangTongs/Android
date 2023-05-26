@@ -88,18 +88,21 @@ public class AiFragment extends Fragment {
 
         int minRemainTime = 9999;
 
-//        for(RoomItem roomItem : ai_gwan) {
-//            try {
-//                if (isWithinRange(currentTime, roomItem.getTime())){
-//                    continue;
-//                }
-//
-//
-//
-//            } catch (ParseException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
+        for(RoomItem roomItem : ai_gwan) {
+            try {
+                if (isWithinRange(currentTime, roomItem.getTime())){
+
+                    continue;
+                } else {
+                    continue;
+                }
+
+
+
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
 
 
