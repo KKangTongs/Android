@@ -27,7 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
+import com.example.kkangtongs.RoomItemProcessor;
 public class AiFragment extends Fragment {
 
     ImageView arrow_1f, arrow_2f, arrow_3f, arrow_4f, arrow_5f;
@@ -68,8 +68,47 @@ public class AiFragment extends Fragment {
         // RecyclerView & Adapter 관련 코드
         initRecyclerView();
 
+        ArrayList<RoomItem> ai_gwan = RoomItemProcessor.roomNameToRoomArray(getContext(), "AI관");
+
+
+        // 오늘 수업 다 출력
+        for(RoomItem roomItem : ai_gwan) {
+            if (roomItem.getRoomNumber().startsWith("1")){
+                roomData_1f.add(roomItem);
+            }else if(roomItem.getRoomNumber().startsWith("2")){
+                roomData_2f.add(roomItem);
+            }else if(roomItem.getRoomNumber().startsWith("3")) {
+                roomData_3f.add(roomItem);
+            }else if(roomItem.getRoomNumber().startsWith("4")){
+                roomData_4f.add(roomItem);
+            }else if(roomItem.getRoomNumber().startsWith("5")){
+                roomData_5f.add(roomItem);
+            }
+        }
+
+        int minRemainTime = 9999;
+
+        for(RoomItem roomItem : ai_gwan) {
+            try {
+                if (isWithinRange(currentTime, roomItem.getTime())){
+                    continue;
+                } else if {
+
+                }
+
+
+
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+
+//        for(RoomItem roomItem : ai_gwan){
+//            Log.d("aifrag", roomItem.ge)
+//        }
         // 층별 강의실 데이터 세팅
-        setRoomList();
 
         // 층별 화살표에 대한 Click Listener
         arrow_1f.setOnClickListener(new View.OnClickListener() {
@@ -171,129 +210,7 @@ public class AiFragment extends Fragment {
     }
 
 
-
-    private void setRoomList() {
-        // 더미 데이터 대신 MainActivity에서 가져온 데이터 사용
-        for (JSONArray innerArray : RoomItemProcessor.AI_gwan) {
-            try {
-                // 강의실 이름 - 호수
-                String roomNameNumber = innerArray.getString(6);
-                // 강의 요일 - 시간
-                String roomDayTime = innerArray.getString(5);
-
-
-                Date currentDate = new Date();
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(currentDate);
-
-                int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-
-                // 한 강의에 강의실 2개 쓰는 경우
-                if (roomNameNumber.contains(",")){
-
-                    String[] courseParts = roomNameNumber.split(",");// AI관-1호, AI관-2호
-
-                    String roomNameNumber1 = courseParts[0];
-                    String roomNameNumber2 = courseParts[1]; // AI관-2호
-
-                    String[] roomParts1 = roomNameNumber1.split("-");
-                    String[] roomParts2 = roomNameNumber2.split("-");
-
-                    String roomName1 = roomParts1[0]; // ai관
-                    String roomNumber1 = roomParts1[1]; // 1
-                    String roomName2 = roomParts2[0];
-                    String roomNumber2 = roomParts2[1];
-
-                    // 강의 일주일에 2번
-                    String[] dayTimePart = roomDayTime.split(" ,");
-                    String dayTime1 = dayTimePart[0];
-                    String dayTime2 = dayTimePart[0];
-
-                    String day1 = dayTime1.substring(0, 1); // 수
-                    String time1 = dayTime1.substring(1); // 1
-
-                    String day2 = dayTime2.substring(0, 1);
-                    String time2 = dayTime2.substring(1);
-
-                    if (currentDayOfWeek == getDayOfWeek(day1)) {
-                        if (roomNumber1.startsWith("1")) {
-                            roomData_1f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                        } else if (roomNumber1.startsWith("2")) {
-                            roomData_2f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                        } else if (roomNumber1.startsWith("3")) {
-                            roomData_3f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                        } else if (roomNumber1.startsWith("4")) {
-                            roomData_4f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                        } else if (roomNumber1.startsWith("5")) {
-                            roomData_5f.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                        }
-                    }
-
-                    if (currentDayOfWeek == getDayOfWeek(day2)) {
-                        if (roomNumber2.startsWith("1")) {
-                            roomData_1f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber2.startsWith("2")) {
-                            roomData_2f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber2.startsWith("3")) {
-                            roomData_3f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber2.startsWith("4")) {
-                            roomData_4f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber2.startsWith("5")) {
-                            roomData_5f.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        }
-                    }
-
-                } else { // 강의실 1개
-
-                    String[] roomParts = roomNameNumber.split("-");
-                    String[] dayTimePart = roomDayTime.split(" ,");
-
-                    String roomName = roomParts[0];
-                    String roomNumber = roomParts[1];
-
-                    for (String dayTime : dayTimePart){
-                        String day = dayTime.substring(0,1);
-                        String time = dayTime.substring(1);
-
-                        if (currentDayOfWeek == getDayOfWeek(day)) {
-                            if (roomNumber.startsWith("1")) {
-                                roomData_1f.add(new RoomItem(roomName, roomNumber, day, time));
-                            } else if (roomNumber.startsWith("2")) {
-                                roomData_2f.add(new RoomItem(roomName, roomNumber, day, time));
-                                Log.d("2f", roomNumber);
-                            } else if (roomNumber.startsWith("3")) {
-                                roomData_3f.add(new RoomItem(roomName, roomNumber, day, time));
-                            } else if (roomNumber.startsWith("4")) {
-                                roomData_4f.add(new RoomItem(roomName, roomNumber, day, time));
-                            } else if (roomNumber.startsWith("5")) {
-                                roomData_5f.add(new RoomItem(roomName, roomNumber, day, time));
-                            }
-                        }
-                    }
-
-
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // 나머지 층도 동일한 방식으로 데이터 추가
-
-        // 데이터 변경사항 알리는 코드
-        adapter_1f.notifyDataSetChanged();
-        adapter_2f.notifyDataSetChanged();
-        adapter_3f.notifyDataSetChanged();
-        adapter_4f.notifyDataSetChanged();
-        adapter_5f.notifyDataSetChanged();
-
-        // 나머지 어댑터에 대해서도 notifyDataSetChanged() 호출
-    }
-
-
-    public boolean isWithinRange(String currentTime, String time) throws ParseException {
-
+    public Date remainTime (String currentTime, String time) throws ParseException {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
         Date currentTimeObj = timeFormat.parse(currentTime);
 
@@ -301,7 +218,6 @@ public class AiFragment extends Fragment {
         String endT = "";
 
         if (time.equals("1")){
-
             startT = "09:00";
             endT = "10:00";
         }else if (time.equals("2")){
@@ -343,39 +259,71 @@ public class AiFragment extends Fragment {
         }else if (time.equals("E")){
             startT = "16:00";
             endT = "17:15";
+        }
 
+        Date startTimeObj = timeFormat.parse(startT);
+        Date endTimeObj = timeFormat.parse(endT);
 
+        return currentTimeObj - startTimeObj;
+    }
+
+    public boolean isWithinRange(String currentTime, String time) throws ParseException {
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        Date currentTimeObj = timeFormat.parse(currentTime);
+
+        String startT = "";
+        String endT = "";
+
+        if (time.equals("1")){
+            startT = "09:00";
+            endT = "10:00";
+        }else if (time.equals("2")){
+            startT = "10:00";
+            endT = "11:00";
+        }else if (time.equals("3")){
+            startT = "11:00";
+            endT = "12:00";
+        }else if (time.equals("4")){
+            startT = "12:00";
+            endT = "13:00";
+        }else if (time.equals("5")){
+            startT = "13:00";
+            endT = "14:00";
+        }else if (time.equals("6")){
+            startT = "14:00";
+            endT = "15:00";
+        }else if (time.equals("7")){
+            startT = "15:00";
+            endT = "16:00";
+        }else if (time.equals("8")){
+            startT = "16:00";
+            endT = "17:00";
+        }else if (time.equals("9")){
+            startT = "17:00";
+            endT = "18:00";
+        }else if (time.equals("A")){
+            startT = "09:30";
+            endT = "10:45";
+        }else if (time.equals("B")){
+            startT = "11:00";
+            endT = "12:15";
+        }else if (time.equals("C")){
+            startT = "13:00";
+            endT = "14:15";
+        }else if (time.equals("D")){
+            startT = "14:30";
+            endT = "15:45";
+        }else if (time.equals("E")){
+            startT = "16:00";
+            endT = "17:15";
         }
 
         Date startTimeObj = timeFormat.parse(startT);
         Date endTimeObj = timeFormat.parse(endT);
 
         return currentTimeObj.after(startTimeObj) && currentTimeObj.before(endTimeObj);
-
     }
-
-    private int getDayOfWeek(String day) {
-        switch (day) {
-            case "일":
-                return 1;
-            case "월":
-                return 2;
-            case "화":
-                return 3;
-            case "수":
-                return 4;
-            case "목":
-                return 5;
-            case "금":
-                return 6;
-            case "토":
-                return 7;
-            default:
-                return -1;
-        }
-    }
-
-
 
     @Override
     public void onStart() {

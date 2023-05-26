@@ -1,6 +1,7 @@
 package com.example.kkangtongs;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.kkangtongs.data.RoomItem;
 
@@ -9,7 +10,11 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class RoomItemProcessor {
 
@@ -147,8 +152,15 @@ public class RoomItemProcessor {
                 // 강의 요일 - 시간
                 String roomDayTime = innerArray.getString(5);
 
+
+                Date currentDate = new Date();
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(currentDate);
+
+                int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
                 // 한 강의에 강의실 2개 쓰는 경우
-                if (roomNameNumber.contains(",")) {
+                if (roomNameNumber.contains(",")){
 
                     String[] courseParts = roomNameNumber.split(",");// AI관-1호, AI관-2호
 
@@ -164,78 +176,9 @@ public class RoomItemProcessor {
                     String roomNumber2 = roomParts2[1];
 
                     // 강의 일주일에 2번
-                    if (roomDayTime.length() == 6) {
-                        String[] dayTimePart = roomDayTime.split(" ,");
-                        String dayTime1 = dayTimePart[0];
-                        String dayTime2 = dayTimePart[0];
-
-                        String day1 = dayTime1.substring(0, 1); // 수
-                        String time1 = dayTime1.substring(1); // 1
-
-                        String day2 = dayTime2.substring(0, 1);
-                        String time2 = dayTime2.substring(1);
-
-                        if (roomNumber1.startsWith("1")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber1.startsWith("2")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber1.startsWith("3")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber1.startsWith("4")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber1.startsWith("5")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber1.startsWith("5")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber1.startsWith("5")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber1.startsWith("5")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber1.startsWith("5")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber1.startsWith("5")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        }
-
-
-                        if (roomNumber2.startsWith("1")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber2.startsWith("2")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber2.startsWith("3")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber2.startsWith("4")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        } else if (roomNumber2.startsWith("5")) {
-                            result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
-                            result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-                        }
-                    }
-
-
-                } else if (roomDayTime.length() == 6) { // 강의실 1개, 강의 일주일에 두번
-
-                    String[] roomParts = roomNameNumber.split("-");
                     String[] dayTimePart = roomDayTime.split(" ,");
-                    String dayTime1 = dayTimePart[0]; // 수1
-                    String dayTime2 = dayTimePart[0]; // 수2
-
-                    String roomName = roomParts[0];
-                    String roomNumber = roomParts[1];
+                    String dayTime1 = dayTimePart[0];
+                    String dayTime2 = dayTimePart[0];
 
                     String day1 = dayTime1.substring(0, 1); // 수
                     String time1 = dayTime1.substring(1); // 1
@@ -243,22 +186,31 @@ public class RoomItemProcessor {
                     String day2 = dayTime2.substring(0, 1);
                     String time2 = dayTime2.substring(1);
 
-                    if (roomNumber.startsWith("1")) {
-                        result.add(new RoomItem(roomName, roomNumber, day1, time1));
-                        result.add(new RoomItem(roomName, roomNumber, day2, time2));
-                    } else if (roomNumber.startsWith("2")) {
-                        result.add(new RoomItem(roomName, roomNumber, day1, time1));
-                        result.add(new RoomItem(roomName, roomNumber, day2, time2));
-                    } else if (roomNumber.startsWith("3")) {
-                        result.add(new RoomItem(roomName, roomNumber, day1, time1));
-                        result.add(new RoomItem(roomName, roomNumber, day2, time2));
-                    } else if (roomNumber.startsWith("4")) {
-                        result.add(new RoomItem(roomName, roomNumber, day1, time1));
-                        result.add(new RoomItem(roomName, roomNumber, day2, time2));
-                    } else if (roomNumber.startsWith("5")) {
-                        result.add(new RoomItem(roomName, roomNumber, day1, time1));
-                        result.add(new RoomItem(roomName, roomNumber, day2, time2));
+                    if (currentDayOfWeek == getDayOfWeek(day1)) {
+                        result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
                     }
+
+                    if (currentDayOfWeek == getDayOfWeek(day2)) {
+                        result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                    }
+
+                } else { // 강의실 1개
+
+                    String[] roomParts = roomNameNumber.split("-");
+                    String[] dayTimePart = roomDayTime.split(" ,");
+
+                    String roomName = roomParts[0];
+                    String roomNumber = roomParts[1];
+
+                    for (String dayTime : dayTimePart){
+                        String day = dayTime.substring(0,1);
+                        String time = dayTime.substring(1);
+
+                        if (currentDayOfWeek == getDayOfWeek(day)) {
+                            result.add(new RoomItem(roomName, roomNumber, day, time));
+                        }
+                    }
+
                 }
 
             } catch (JSONException e) {
@@ -283,5 +235,27 @@ public class RoomItemProcessor {
         }
         return json;
     }
+
+    private static int getDayOfWeek(String day) {
+        switch (day) {
+            case "일":
+                return 1;
+            case "월":
+                return 2;
+            case "화":
+                return 3;
+            case "수":
+                return 4;
+            case "목":
+                return 5;
+            case "금":
+                return 6;
+            case "토":
+                return 7;
+            default:
+                return -1;
+        }
+    }
+
 
 }

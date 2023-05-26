@@ -3,15 +3,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="MyPage Fragment"
-        android:textSize="20sp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/myPageLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_margin="10dp">
+
+            <!-- [1] 홈 화면 설정 -->
+            <LinearLayout style="@style/myPageSectorBorder">
+                <TextView style="@style/myPageSectorTitle"
+                    android:text="홈 화면 설정"/>
+                <Button style="@style/myPageButton"
+                    android:text="즐겨찾기 편집"/>
+                <Button style="@style/myPageButton"
+                    android:text="건물 순서 설정"/>
+            </LinearLayout>
+
+            <!-- [2] 애플리케이션 설정 -->
+            <LinearLayout style="@style/myPageSectorBorder">
+                <TextView style="@style/myPageSectorTitle"
+                    android:text="애플리케이션 설정"/>
+                <Button style="@style/myPageButton"
+                    android:text="다크 모드"/>
+                <Button style="@style/myPageButton"
+                    android:text="알림 설정"/>
+            </LinearLayout>
+
+            <!-- [3] 이용 안내 -->
+            <LinearLayout style="@style/myPageSectorBorder">
+                <TextView style="@style/myPageSectorTitle"
+                    android:text="이용 안내"/>
+                <!-- 버전 부분 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button style="@style/myPageButton"
+                        android:layout_weight="1"
+                        android:text="앱 버전"/>
+                    <Button style="@style/myPageButton"
+                        android:layout_weight="1"
+                        android:textColor="#ABABAB"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right|center_vertical"
+                        android:text="1.0.0"/>
+                </LinearLayout>
+                <!-- 여기 밑으로는 "공지사항"부터 -->
+                <Button style="@style/myPageButton"
+                    android:text="공지사항"/>
+                <Button style="@style/myPageButton"
+                    android:text="오픈소스 라이선스"/>
+                <Button style="@style/myPageButton"
+                    android:text="문의하기 / 오류 제보"/>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
