@@ -3,7 +3,6 @@ package com.example.kkangtongs.building;
 import static java.lang.Integer.parseInt;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,21 +14,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kkangtongs.MainActivity;
 import com.example.kkangtongs.R;
-import com.example.kkangtongs.RoomItemProcessor;
+import com.example.kkangtongs.processor.RoomItemProcessor;
 import com.example.kkangtongs.data.RoomItem;
 import com.example.kkangtongs.adapter.RoomListRVAdapter;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import com.example.kkangtongs.RoomItemProcessor;
+
 public class AiFragment extends Fragment {
 
     ImageView arrow_1f, arrow_2f, arrow_3f, arrow_4f, arrow_5f;

@@ -5,444 +5,495 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_B2_cv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="5dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:overScrollMode="never">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="B2"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_B2_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_B2_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_B2_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_B1_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_B2_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="B1"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_B1_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_B1_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_B1_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_1f_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_B1_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="1F"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_1f_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_1f_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_1f_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_2f_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_1f_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2F"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_2f_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_2f_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_2f_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_3f_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_2f_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="3F"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_3f_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_3f_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_3f_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_4f_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_3f_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="4F"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_4f_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_4f_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_4f_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_5f_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_4f_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="5F"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_5f_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_5f_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_5f_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_6f_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_5f_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="6F"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_6f_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_6f_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_6f_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_7f_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_6f_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="7F"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_7f_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_7f_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_7f_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_8f_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_7f_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="8F"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_8f_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_8f_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_8f_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gachongwan_9f_cv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_8f_rv"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="9F"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:background="@color/blue_violet"/>
-
-        <ImageView
-            android:id="@+id/gachongwan_9f_iv"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/arrow_square_white"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="10dp"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gachongwan_9f_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/gachongwan_9f_cv"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_blue_task"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_B2_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="B2"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_B2_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_B2_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_B2_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_B1_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_B2_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="B1"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_B1_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_B1_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_B1_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_1f_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_B1_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_violet"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:text="1F"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/gachongwan_1f_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_1f_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_1f_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_2f_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_1f_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2F"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_2f_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_2f_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_2f_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_3f_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_2f_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3F"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_3f_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_3f_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_3f_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_4f_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_3f_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4F"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_4f_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_4f_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_4f_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_5f_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_4f_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5F"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_5f_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_5f_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_5f_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_6f_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_5f_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="6F"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_6f_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_6f_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_6f_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_7f_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_6f_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="7F"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_7f_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_7f_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_7f_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_8f_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_7f_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="8F"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_8f_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_8f_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_8f_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gachongwan_9f_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_8f_rv"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="9F"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:paddingStart="20dp"
+                    android:background="@color/blue_violet"/>
+
+                <ImageView
+                    android:id="@+id/gachongwan_9f_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/arrow_square_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachongwan_9f_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/gachongwan_9f_cv"
+                android:layout_margin="5dp"
+                tools:listitem="@layout/item_blue_task"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

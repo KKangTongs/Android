@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="tabText">
-        <item name="android:textSize">30sp</item>
+    <!-- 강의실 페이지's TabLayout    -->
+    <style name="tabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/blue_Main</item>
     </style>
 
     <!-- [마이페이지 관련 스타일들] -->

@@ -13,6 +13,8 @@ import com.example.kkangtongs.data.RoomItem;
 import com.example.kkangtongs.main.HomeFragment;
 import com.example.kkangtongs.main.LectureRoomFragment;
 import com.example.kkangtongs.main.MyPageFragment;
+import com.example.kkangtongs.processor.LocationProcessor;
+import com.example.kkangtongs.processor.RoomItemProcessor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
