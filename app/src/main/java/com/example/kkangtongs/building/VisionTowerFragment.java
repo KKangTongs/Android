@@ -41,24 +41,24 @@ public class VisionTowerFragment extends Fragment {
 
 
         // 층별 화살표
-        arrow_b2 = (ImageView) rootView.findViewById(R.id.gachongwan_B2_iv);
-        arrow_b1 = (ImageView) rootView.findViewById(R.id.gachongwan_B1_iv);
-        arrow_1f = (ImageView) rootView.findViewById(R.id.gachongwan_1f_iv);
-        arrow_2f = (ImageView) rootView.findViewById(R.id.gachongwan_2f_iv);
-        arrow_3f = (ImageView) rootView.findViewById(R.id.gachongwan_3f_iv);
-        arrow_4f = (ImageView) rootView.findViewById(R.id.gachongwan_4f_iv);
-        arrow_5f = (ImageView) rootView.findViewById(R.id.gachongwan_5f_iv);
-        arrow_6f = (ImageView) rootView.findViewById(R.id.gachongwan_6f_iv);
+        arrow_b2 = (ImageView) rootView.findViewById(R.id.vision_B2_iv);
+        arrow_b1 = (ImageView) rootView.findViewById(R.id.vision_B1_iv);
+        arrow_1f = (ImageView) rootView.findViewById(R.id.vision_1f_iv);
+        arrow_2f = (ImageView) rootView.findViewById(R.id.vision_2f_iv);
+        arrow_3f = (ImageView) rootView.findViewById(R.id.vision_3f_iv);
+        arrow_4f = (ImageView) rootView.findViewById(R.id.vision_4f_iv);
+        arrow_5f = (ImageView) rootView.findViewById(R.id.vision_5f_iv);
+        arrow_6f = (ImageView) rootView.findViewById(R.id.vision_6f_iv);
 
         // 층별 강의실 정보
-        roomList_b2 = (RecyclerView) rootView.findViewById(R.id.gachongwan_B2_rv);
-        roomList_b1 = (RecyclerView) rootView.findViewById(R.id.gachongwan_B1_rv);
-        roomList_1f = (RecyclerView) rootView.findViewById(R.id.gachongwan_1f_rv);
-        roomList_2f = (RecyclerView) rootView.findViewById(R.id.gachongwan_2f_rv);
-        roomList_3f = (RecyclerView) rootView.findViewById(R.id.gachongwan_3f_rv);
-        roomList_4f = (RecyclerView) rootView.findViewById(R.id.gachongwan_4f_rv);
-        roomList_5f = (RecyclerView) rootView.findViewById(R.id.gachongwan_5f_rv);
-        roomList_6f = (RecyclerView) rootView.findViewById(R.id.gachongwan_6f_rv);
+        roomList_b2 = (RecyclerView) rootView.findViewById(R.id.vision_B2_rv);
+        roomList_b1 = (RecyclerView) rootView.findViewById(R.id.vision_B1_rv);
+        roomList_1f = (RecyclerView) rootView.findViewById(R.id.vision_1f_rv);
+        roomList_2f = (RecyclerView) rootView.findViewById(R.id.vision_2f_rv);
+        roomList_3f = (RecyclerView) rootView.findViewById(R.id.vision_3f_rv);
+        roomList_4f = (RecyclerView) rootView.findViewById(R.id.vision_4f_rv);
+        roomList_5f = (RecyclerView) rootView.findViewById(R.id.vision_5f_rv);
+        roomList_6f = (RecyclerView) rootView.findViewById(R.id.vision_6f_rv);
 
         // RecyclerView & Adapter 관련 코드
         initRecyclerView();
