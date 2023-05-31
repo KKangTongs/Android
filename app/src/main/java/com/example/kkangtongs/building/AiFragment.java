@@ -3,6 +3,7 @@ package com.example.kkangtongs.building;
 import static java.lang.Integer.parseInt;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,12 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kkangtongs.R;
+import com.example.kkangtongs.main.LectureRoomFragment;
 import com.example.kkangtongs.processor.RoomItemProcessor;
 import com.example.kkangtongs.data.RoomItem;
 import com.example.kkangtongs.adapter.RoomListRVAdapter;
@@ -39,9 +42,6 @@ public class AiFragment extends Fragment {
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
     public String currentTime = dateFormat.format(new Date());
-
-
-
 
 
     @Nullable

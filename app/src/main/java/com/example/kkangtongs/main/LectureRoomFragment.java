@@ -35,6 +35,7 @@ public class LectureRoomFragment extends Fragment {
     private ContentsPagerAdapter contentsPagerAdapter;
     private Button timeBtn;
     private TextView timeInfo;
+    public String time;
 
     final List<String> tabElement = Arrays.asList("AI공학관", "비전타워", "산학협력관2", "가천관", "바이오나노대학");
 
@@ -54,10 +55,8 @@ public class LectureRoomFragment extends Fragment {
         // 현재 시간 세팅
         LocalTime now = LocalTime.now();
 
-        Log.d("TIME", now.toString());
-
         // 포맷 정의하기
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH시 mm분 ss초");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 
         // 포맷 적용하기
         String formatedNow = now.format(formatter);
@@ -66,8 +65,9 @@ public class LectureRoomFragment extends Fragment {
         int hour = now.getHour();
         int minute = now.getMinute();
 
-        String currentTime = String.format("%02d:%02d", hour, minute);
-        timeInfo.setText(currentTime);
+        time = String.format("%02d:%02d", hour, minute);
+        timeInfo.setText(time);
+        Log.d("LECTURETIME", time);
 
 
         // viewpager2에서 overScrollmode를 never로 설정
@@ -87,6 +87,7 @@ public class LectureRoomFragment extends Fragment {
             }
         }).attach();
 
+        // 시간 등록 버튼 눌렀을 때
         timeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,8 +97,8 @@ public class LectureRoomFragment extends Fragment {
                         // 확인버튼 눌렀을 때
                         Log.d("TIME_INPUT", hour + "시 " + minute + "분");
 
-                        String registerTime = String.format("%02d:%02d", hour, minute);
-                        timeInfo.setText(registerTime);
+                        time = String.format("%02d:%02d", hour, minute);
+                        timeInfo.setText(time);
                     }
 
                     @Override
@@ -118,4 +119,9 @@ public class LectureRoomFragment extends Fragment {
 
         return rootView;
     }
+
+    public String getTime() {
+        return time;
+    }
+
 }
