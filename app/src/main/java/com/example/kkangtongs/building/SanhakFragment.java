@@ -1,5 +1,7 @@
 package com.example.kkangtongs.building;
 
+import static java.lang.Integer.parseInt;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kkangtongs.R;
 import com.example.kkangtongs.adapter.RoomListRVAdapter;
 import com.example.kkangtongs.data.RoomItem;
+import com.example.kkangtongs.processor.RoomItemProcessor;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class SanhakFragment extends Fragment {
 
@@ -33,11 +40,21 @@ public class SanhakFragment extends Fragment {
     ArrayList<RoomItem> roomData_5f = new ArrayList<>();
     ArrayList<RoomItem> roomData_6f = new ArrayList<>();
 
+    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+    public String currentTime = dateFormat.format(new Date());
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_sanhak, container, false);
+
+        Date currentDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentDate);
+
+        int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
         // 층별 화살표
         arrow_b2 = (ImageView) rootView.findViewById(R.id.sanhak_B2_iv);
@@ -62,10 +79,208 @@ public class SanhakFragment extends Fragment {
         // RecyclerView & Adapter 관련 코드
         initRecyclerView();
 
-        // 층별 강의실 데이터 세팅
-        setRoomList();
+        ArrayList<RoomItem> sanhak = RoomItemProcessor.roomNameToRoomArray(getContext(), "산학협력관");
+
+        for(RoomItem roomItem : sanhak) {
+            if (!roomItem.getBuildingName().equals("산학협력관")){
+                continue;
+            }
+            if (currentDayOfWeek != getDayOfWeek(roomItem.getDay())) { // 오늘 수업 아닌 경우
+                boolean included = false;
+
+                for (RoomItem rd : roomData_1f){ // 이미 데이터 있으면 break
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_2f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_3f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_4f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_5f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_6f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_b1){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_b2){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+
+                if (!included){
+
+                    roomItem.setRemainTime(9999);
+                    if (roomItem.getRoomNumber().startsWith("1")){
+                        roomData_1f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("2")){
+                        roomData_2f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("3")){
+                        roomData_3f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("4")){
+                        roomData_4f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("5")){
+                        roomData_5f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("6")){
+                        roomData_6f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("B1")){
+                        roomData_b1.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("B2")){
+                        roomData_b2.add(roomItem);
+                    }
+
+                }
 
 
+            }
+        }
+
+        for(RoomItem roomItem : sanhak) {
+            if (!roomItem.getBuildingName().equals("산학협력관")){
+                continue;
+            }
+            try {
+                if (currentDayOfWeek == getDayOfWeek(roomItem.getDay())) {
+                    if (roomItem.isInclass() || roomItem.getTime().equals("")) { // 수업 중이거나 시간 없는 수업이면 continue
+                        continue;
+                    }
+                    if (isWithinRange(currentTime, roomItem.getTime()) || isAfterRange(currentTime, roomItem.getTime())) { // 현재 수업중
+                        roomItem.setInclass(true);
+                    } else {
+                        boolean included = false;
+
+                        for (RoomItem rd : roomData_1f) {// 이미 1층에 있는 경우
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_2f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_3f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_4f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_5f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_6f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_b1) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_b2) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+
+                        if (included) {
+                            continue;
+                        }
+
+                        roomItem.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+
+                        if (roomItem.getRoomNumber().startsWith("1")) {
+                            roomData_1f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("2")) {
+                            roomData_2f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("3")) {
+                            roomData_3f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("4")) {
+                            roomData_4f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("5")) {
+                            roomData_5f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("6")) {
+                            roomData_6f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("B1")) {
+                            roomData_b1.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("B2")) {
+                            roomData_b2.add(roomItem);
+                        }
+                    }
+                }
+
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }
         // 층별 화살표에 대한 Click Listener
         arrow_b2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,6 +431,261 @@ public class SanhakFragment extends Fragment {
         roomList_6f.setAdapter(adapter_6f);
     }
 
+    private boolean isAfterRange(String currentTime, String time) throws ParseException {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        Date currentTimeObj = timeFormat.parse(currentTime);
+
+        String startT = null;
+        String endT = null;
+
+        if (time.equals("1")){
+            startT = "09:00";
+            endT = "10:00";
+        }else if (time.equals("2")){
+            startT = "10:00";
+            endT = "11:00";
+        }else if (time.equals("3")){
+            startT = "11:00";
+            endT = "12:00";
+        }else if (time.equals("4")){
+            startT = "12:00";
+            endT = "13:00";
+        }else if (time.equals("5")){
+            startT = "13:00";
+            endT = "14:00";
+        }else if (time.equals("6")){
+            startT = "14:00";
+            endT = "15:00";
+        }else if (time.equals("7")){
+            startT = "15:00";
+            endT = "16:00";
+        }else if (time.equals("8")){
+            startT = "16:00";
+            endT = "17:00";
+        }else if (time.equals("9")){
+            startT = "17:00";
+            endT = "18:00";
+        }else if (time.equals("10")){
+            startT = "18:00";
+            endT = "19:00";
+        }else if (time.equals("11")){
+            startT = "19:00";
+            endT = "20:00";
+        }else if (time.equals("12")){
+            startT = "20:00";
+            endT = "21:00";
+        }else if (time.equals("13")){
+            startT = "21:00";
+            endT = "22:00";
+        }else if (time.equals("14")){
+            startT = "22:00";
+            endT = "23:00";
+        }else if (time.equals("A")){
+            startT = "09:30";
+            endT = "10:45";
+        }else if (time.equals("B")){
+            startT = "11:00";
+            endT = "12:15";
+        }else if (time.equals("C")){
+            startT = "13:00";
+            endT = "14:15";
+        }else if (time.equals("D")){
+            startT = "14:30";
+            endT = "15:45";
+        }else if (time.equals("E")){
+            startT = "16:00";
+            endT = "17:15";
+        }
+
+        Date startTimeObj = timeFormat.parse(startT);
+        Date endTimeObj = timeFormat.parse(endT);
+
+        return currentTimeObj.after(endTimeObj);
+    }
+
+    private static int getDayOfWeek(String day) {
+        switch (day) {
+            case "일":
+                return 1;
+            case "월":
+                return 2;
+            case "화":
+                return 3;
+            case "수":
+                return 4;
+            case "목":
+                return 5;
+            case "금":
+                return 6;
+            case "토":
+                return 7;
+            default:
+                return -1;
+        }
+    }
+
+    public int getRemainTime (String currentTime, String time) throws ParseException {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        Date currentTimeObj = timeFormat.parse(currentTime);
+
+        String startT = null;
+        String endT = null;
+
+        if (time.equals("1")){
+            startT = "09:00";
+            endT = "10:00";
+        }else if (time.equals("2")){
+            startT = "10:00";
+            endT = "11:00";
+        }else if (time.equals("3")){
+            startT = "11:00";
+            endT = "12:00";
+        }else if (time.equals("4")){
+            startT = "12:00";
+            endT = "13:00";
+        }else if (time.equals("5")){
+            startT = "13:00";
+            endT = "14:00";
+        }else if (time.equals("6")){
+            startT = "14:00";
+            endT = "15:00";
+        }else if (time.equals("7")){
+            startT = "15:00";
+            endT = "16:00";
+        }else if (time.equals("8")){
+            startT = "16:00";
+            endT = "17:00";
+        }else if (time.equals("9")){
+            startT = "17:00";
+            endT = "18:00";
+        }else if (time.equals("10")){
+            startT = "18:00";
+            endT = "19:00";
+        }else if (time.equals("11")){
+            startT = "19:00";
+            endT = "20:00";
+        }else if (time.equals("12")){
+            startT = "20:00";
+            endT = "21:00";
+        }else if (time.equals("13")){
+            startT = "21:00";
+            endT = "22:00";
+        }else if (time.equals("14")){
+            startT = "22:00";
+            endT = "23:00";
+        }else if (time.equals("A")){
+            startT = "09:30";
+            endT = "10:45";
+        }else if (time.equals("B")){
+            startT = "11:00";
+            endT = "12:15";
+        }else if (time.equals("C")){
+            startT = "13:00";
+            endT = "14:15";
+        }else if (time.equals("D")){
+            startT = "14:30";
+            endT = "15:45";
+        }else if (time.equals("E")){
+            startT = "16:00";
+            endT = "17:15";
+        }
+
+        Date startTimeObj = timeFormat.parse(startT);
+        Date endTimeObj = timeFormat.parse(endT);
+
+
+
+        String crntParts[] = currentTime.split(":"); //
+        String crntHour = crntParts[0];// 현재 시간
+        String crntMinute = crntParts[1]; // 현재 분
+
+        String stParts[] = startT.split(":"); //
+        String stHour = stParts[0];// 강의 시작 시간
+        String stMinute = stParts[1]; // 분
+
+        int timeDifference = (parseInt(stHour) - parseInt(crntHour)) * 60 + parseInt(stMinute) - parseInt(crntMinute);
+
+        return timeDifference;
+    }
+
+    public boolean isWithinRange(String currentTime, String time) throws ParseException {
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        Date currentTimeObj = timeFormat.parse(currentTime);
+
+        String startT = null;
+        String endT = null;
+
+        if (time.equals("1")){
+            startT = "09:00";
+            endT = "10:00";
+        }else if (time.equals("2")){
+            startT = "10:00";
+            endT = "11:00";
+        }else if (time.equals("3")){
+            startT = "11:00";
+            endT = "12:00";
+        }else if (time.equals("4")){
+            startT = "12:00";
+            endT = "13:00";
+        }else if (time.equals("5")){
+            startT = "13:00";
+            endT = "14:00";
+        }else if (time.equals("6")){
+            startT = "14:00";
+            endT = "15:00";
+        }else if (time.equals("7")){
+            startT = "15:00";
+            endT = "16:00";
+        }else if (time.equals("8")){
+            startT = "16:00";
+            endT = "17:00";
+        }else if (time.equals("9")){
+            startT = "17:00";
+            endT = "18:00";
+        }else if (time.equals("10")){
+            startT = "18:00";
+            endT = "19:00";
+        }else if (time.equals("11")){
+            startT = "19:00";
+            endT = "20:00";
+        }else if (time.equals("12")){
+            startT = "20:00";
+            endT = "21:00";
+        }else if (time.equals("13")){
+            startT = "21:00";
+            endT = "22:00";
+        }else if (time.equals("14")){
+            startT = "22:00";
+            endT = "23:00";
+        }else if (time.equals("A")){
+            startT = "09:30";
+            endT = "10:45";
+        }else if (time.equals("B")){
+            startT = "11:00";
+            endT = "12:15";
+        }else if (time.equals("C")){
+            startT = "13:00";
+            endT = "14:15";
+        }else if (time.equals("D")){
+            startT = "14:30";
+            endT = "15:45";
+        }else if (time.equals("E")){
+            startT = "16:00";
+            endT = "17:15";
+        }
+
+        Date startTimeObj = timeFormat.parse(startT);
+        Date endTimeObj = timeFormat.parse(endT);
+
+        return currentTimeObj.after(startTimeObj) && currentTimeObj.before(endTimeObj);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
 
     private void setRoomList() {
 

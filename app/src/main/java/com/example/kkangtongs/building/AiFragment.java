@@ -76,6 +76,7 @@ public class AiFragment extends Fragment {
         ArrayList<RoomItem> ai_gwan = RoomItemProcessor.roomNameToRoomArray(getContext(), "AI관");
 
         for(RoomItem roomItem : ai_gwan) {
+
             if (currentDayOfWeek != getDayOfWeek(roomItem.getDay())) { // 오늘 수업 아닌 경우
                 boolean included = false;
 
@@ -110,7 +111,7 @@ public class AiFragment extends Fragment {
                     }
                 }
 
-                if (included == false){
+                if (!included){
 
                     roomItem.setRemainTime(9999);
                     if (roomItem.getRoomNumber().startsWith("1")){
@@ -124,7 +125,6 @@ public class AiFragment extends Fragment {
                     }else if(roomItem.getRoomNumber().startsWith("5")){
                         roomData_5f.add(roomItem);
                     }
-                    continue;
                 }
 
 
@@ -140,7 +140,6 @@ public class AiFragment extends Fragment {
                     }
                     if (isWithinRange(currentTime, roomItem.getTime()) || isAfterRange(currentTime, roomItem.getTime())) { // 현재 수업중
                         roomItem.setInclass(true);
-                        continue;
 
                     } else {
                         boolean included = false;
