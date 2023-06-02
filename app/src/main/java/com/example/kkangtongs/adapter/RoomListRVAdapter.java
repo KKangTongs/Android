@@ -57,9 +57,9 @@ public class RoomListRVAdapter extends RecyclerView.Adapter<RoomListRVAdapter.Vi
             buildingName.setText(item.getBuildingName());
             roomNumber.setText(item.getRoomNumber() + "호");
             if (item.getRemainTime() == 9999){
-                remainTime.setText("오늘 수업 없음!");
+                remainTime.setText("오늘 수업 없음");
             }else {
-                remainTime.setText("남은 시간 : " + item.getRemainTime() + "분");
+                remainTime.setText("사용 가능 : " + item.getRemainTime() + "분");
             }
         }
     }

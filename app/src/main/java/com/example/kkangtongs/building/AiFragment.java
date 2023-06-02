@@ -21,6 +21,7 @@ import com.example.kkangtongs.main.LectureRoomFragment;
 import com.example.kkangtongs.processor.RoomItemProcessor;
 import com.example.kkangtongs.data.RoomItem;
 import com.example.kkangtongs.adapter.RoomListRVAdapter;
+import com.example.kkangtongs.processor.TimeProcessor;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,9 +41,12 @@ public class AiFragment extends Fragment {
     ArrayList<RoomItem> roomData_4f = new ArrayList<>();
     ArrayList<RoomItem> roomData_5f = new ArrayList<>();
 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-    public String currentTime = dateFormat.format(new Date());
+    ArrayList<RoomItem> ai_gwan = new ArrayList<>();
 
+    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+//    public String currentTime = dateFormat.format(new Date());
+    String currentTime = TimeProcessor.getTime();
+    int currentDayOfWeek;
 
     @Nullable
     @Override
@@ -54,7 +58,10 @@ public class AiFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(currentDate);
 
-        int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+        // RoomItemProcessor 클래스를 사용하여 AI관 정보만 읽어오기
+        ai_gwan = RoomItemProcessor.roomNameToRoomArray(getContext(), "AI관");
 
         // 층별 화살표
         arrow_1f = (ImageView) rootView.findViewById(R.id.ai_1f_iv);
@@ -73,8 +80,86 @@ public class AiFragment extends Fragment {
         // RecyclerView & Adapter 관련 코드
         initRecyclerView();
 
-        ArrayList<RoomItem> ai_gwan = RoomItemProcessor.roomNameToRoomArray(getContext(), "AI관");
+        // 설정된 시간에 따른 층별 강의실 정보 업데이트
+        setRoomList();
 
+
+        // 층별 화살표에 대한 Click Listener
+        arrow_1f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(roomList_1f.getVisibility() == View.GONE) {
+                    roomList_1f.setVisibility(View.VISIBLE);
+                    arrow_1f.animate().setDuration(200).rotation(180f);
+                }
+                else {
+                    roomList_1f.setVisibility(View.GONE);
+                    arrow_1f.animate().setDuration(200).rotation(0f);
+                }
+            }
+        });
+
+        arrow_2f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(roomList_2f.getVisibility() == View.GONE) {
+                    roomList_2f.setVisibility(View.VISIBLE);
+                    arrow_2f.animate().setDuration(200).rotation(180f);
+                }
+                else {
+                    roomList_2f.setVisibility(View.GONE);
+                    arrow_2f.animate().setDuration(200).rotation(0f);
+                }
+            }
+        });
+
+        arrow_3f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(roomList_3f.getVisibility() == View.GONE) {
+                    roomList_3f.setVisibility(View.VISIBLE);
+                    arrow_3f.animate().setDuration(200).rotation(180f);
+                }
+                else {
+                    roomList_3f.setVisibility(View.GONE);
+                    arrow_3f.animate().setDuration(200).rotation(0f);
+                }
+            }
+        });
+
+        arrow_4f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(roomList_4f.getVisibility() == View.GONE) {
+                    roomList_4f.setVisibility(View.VISIBLE);
+                    arrow_4f.animate().setDuration(200).rotation(180f);
+                }
+                else {
+                    roomList_4f.setVisibility(View.GONE);
+                    arrow_4f.animate().setDuration(200).rotation(0f);
+                }
+            }
+        });
+
+        arrow_5f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(roomList_5f.getVisibility() == View.GONE) {
+                    roomList_5f.setVisibility(View.VISIBLE);
+                    arrow_5f.animate().setDuration(200).rotation(180f);
+                }
+                else {
+                    roomList_5f.setVisibility(View.GONE);
+                    arrow_5f.animate().setDuration(200).rotation(0f);
+                }
+            }
+        });
+
+        return rootView;
+    }
+
+    // 층별 강의실의 남은 시간 정보
+    private void setRoomList() {
         for(RoomItem roomItem : ai_gwan) {
 
             if (currentDayOfWeek != getDayOfWeek(roomItem.getDay())) { // 오늘 수업 아닌 경우
@@ -214,81 +299,6 @@ public class AiFragment extends Fragment {
                 throw new RuntimeException(e);
             }
         }
-
-
-
-        // 층별 화살표에 대한 Click Listener
-        arrow_1f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(roomList_1f.getVisibility() == View.GONE) {
-                    roomList_1f.setVisibility(View.VISIBLE);
-                    arrow_1f.animate().setDuration(200).rotation(180f);
-                }
-                else {
-                    roomList_1f.setVisibility(View.GONE);
-                    arrow_1f.animate().setDuration(200).rotation(0f);
-                }
-            }
-        });
-
-        arrow_2f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(roomList_2f.getVisibility() == View.GONE) {
-                    roomList_2f.setVisibility(View.VISIBLE);
-                    arrow_2f.animate().setDuration(200).rotation(180f);
-                }
-                else {
-                    roomList_2f.setVisibility(View.GONE);
-                    arrow_2f.animate().setDuration(200).rotation(0f);
-                }
-            }
-        });
-
-        arrow_3f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(roomList_3f.getVisibility() == View.GONE) {
-                    roomList_3f.setVisibility(View.VISIBLE);
-                    arrow_3f.animate().setDuration(200).rotation(180f);
-                }
-                else {
-                    roomList_3f.setVisibility(View.GONE);
-                    arrow_3f.animate().setDuration(200).rotation(0f);
-                }
-            }
-        });
-
-        arrow_4f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(roomList_4f.getVisibility() == View.GONE) {
-                    roomList_4f.setVisibility(View.VISIBLE);
-                    arrow_4f.animate().setDuration(200).rotation(180f);
-                }
-                else {
-                    roomList_4f.setVisibility(View.GONE);
-                    arrow_4f.animate().setDuration(200).rotation(0f);
-                }
-            }
-        });
-
-        arrow_5f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(roomList_5f.getVisibility() == View.GONE) {
-                    roomList_5f.setVisibility(View.VISIBLE);
-                    arrow_5f.animate().setDuration(200).rotation(180f);
-                }
-                else {
-                    roomList_5f.setVisibility(View.GONE);
-                    arrow_5f.animate().setDuration(200).rotation(0f);
-                }
-            }
-        });
-
-        return rootView;
     }
 
     private boolean isAfterRange(String currentTime, String time) throws ParseException {
@@ -569,6 +579,18 @@ public class AiFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        Log.d("LIFECYCLE", "onStart");
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("LIFECYCLE", "onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("LIFECYCLE", "onPause");
     }
 }

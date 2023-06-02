@@ -19,6 +19,7 @@ import com.example.kkangtongs.R;
 import com.example.kkangtongs.TimePickerDialog;
 import com.example.kkangtongs.TimePickerDialogListener;
 import com.example.kkangtongs.adapter.ContentsPagerAdapter;
+import com.example.kkangtongs.processor.TimeProcessor;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -51,21 +52,8 @@ public class LectureRoomFragment extends Fragment {
         timeBtn = (Button) rootView.findViewById(R.id.time_btn);
         timeInfo = (TextView) rootView.findViewById(R.id.time_registerTime_tv);
 
-
-        // 현재 시간 세팅
-        LocalTime now = LocalTime.now();
-
-        // 포맷 정의하기
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-
-        // 포맷 적용하기
-        String formatedNow = now.format(formatter);
-
-        // 시, 분, 초 구하기
-        int hour = now.getHour();
-        int minute = now.getMinute();
-
-        time = String.format("%02d:%02d", hour, minute);
+        // 현재 시간으로 default 세팅
+        time = TimeProcessor.getTime();
         timeInfo.setText(time);
         Log.d("LECTURETIME", time);
 
@@ -118,10 +106,6 @@ public class LectureRoomFragment extends Fragment {
 
 
         return rootView;
-    }
-
-    public String getTime() {
-        return time;
     }
 
 }

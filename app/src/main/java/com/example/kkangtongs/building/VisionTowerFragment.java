@@ -20,6 +20,7 @@ import com.example.kkangtongs.processor.RoomItemProcessor;
 import com.example.kkangtongs.adapter.RoomListRVAdapter;
 import com.example.kkangtongs.data.RoomItem;
 import com.example.kkangtongs.processor.RoomItemProcessor;
+import com.example.kkangtongs.processor.TimeProcessor;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,7 +44,8 @@ public class VisionTowerFragment extends Fragment {
     ArrayList<RoomItem> roomData_6f = new ArrayList<>();
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-    public String currentTime = dateFormat.format(new Date());
+//    public String currentTime = dateFormat.format(new Date());
+    String currentTime = TimeProcessor.getTime();
 
 
     @Nullable
