@@ -23,6 +23,8 @@ import com.example.kkangtongs.processor.TimeProcessor;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -53,9 +55,9 @@ public class LectureRoomFragment extends Fragment {
         timeInfo = (TextView) rootView.findViewById(R.id.time_registerTime_tv);
 
         // 현재 시간으로 default 세팅
+//        time = TimeProcessor.getTime();
         time = TimeProcessor.getTime();
-        timeInfo.setText(time);
-        Log.d("LECTURETIME", time);
+        timeInfo.setText(TimeProcessor.time);
 
 
         // viewpager2에서 overScrollmode를 never로 설정
@@ -87,6 +89,7 @@ public class LectureRoomFragment extends Fragment {
 
                         time = String.format("%02d:%02d", hour, minute);
                         timeInfo.setText(time);
+                        EventBus.getDefault().post(new DataEvent(time));
                     }
 
                     @Override
@@ -106,6 +109,15 @@ public class LectureRoomFragment extends Fragment {
 
 
         return rootView;
+    }
+
+    public static class DataEvent {
+
+        public final String time;
+
+        public DataEvent(String newTime) {
+            this.time = newTime;
+        }
     }
 
 }

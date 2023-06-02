@@ -3,6 +3,7 @@ package com.example.kkangtongs.building;
 import static java.lang.Integer.parseInt;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kkangtongs.R;
 import com.example.kkangtongs.adapter.RoomListRVAdapter;
 import com.example.kkangtongs.data.RoomItem;
+import com.example.kkangtongs.main.LectureRoomFragment;
 import com.example.kkangtongs.processor.RoomItemProcessor;
 import com.example.kkangtongs.processor.TimeProcessor;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,7 +54,7 @@ public class GachongwanFragment extends Fragment {
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 //    public String currentTime = dateFormat.format(new Date());
-    String currentTime = TimeProcessor.getTime();
+    String currentTime;
     int currentDayOfWeek;
 
     @Nullable
@@ -62,6 +68,7 @@ public class GachongwanFragment extends Fragment {
         calendar.setTime(currentDate);
 
         currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        currentTime = TimeProcessor.getTime();
 
         // RoomItemProcessor 클래스를 사용하여 가천관 정보만 읽어오기
         gachon_gwan = RoomItemProcessor.roomNameToRoomArray(getContext(), "가천관");
@@ -94,6 +101,13 @@ public class GachongwanFragment extends Fragment {
 
         // RecyclerView & Adapter 관련 코드
         initRecyclerView();
+
+        // time에 대한 변화를 실시간으로 받는 코드
+        try {
+            EventBus.getDefault().register(this);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // 설정된 시간에 따른 층별 강의실 정보 업데이트
         setRoomList(currentTime);
@@ -827,5 +841,33 @@ public class GachongwanFragment extends Fragment {
         adapter_8f.notifyDataSetChanged();
         adapter_9f.notifyDataSetChanged();
 
+    }
+
+    // LectureRoomFragment에서 시간 등록 이벤트가 발생했을때
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void testEvent(LectureRoomFragment.DataEvent event) {
+        currentTime = event.time;
+        clearList();
+        setRoomList(currentTime);
+        Log.d("EVENTTIME", currentTime);
+    }
+
+    public void clearList() {
+        Log.d("CLEAR_TIME", "clearList()");
+
+        gachon_gwan.clear();
+        gachon_gwan = RoomItemProcessor.roomNameToRoomArray(getContext(), "가천관");
+
+        roomData_b2.clear();
+        roomData_b1.clear();
+        roomData_1f.clear();
+        roomData_2f.clear();
+        roomData_3f.clear();
+        roomData_4f.clear();
+        roomData_5f.clear();
+        roomData_6f.clear();
+        roomData_7f.clear();
+        roomData_8f.clear();
+        roomData_9f.clear();
     }
 }

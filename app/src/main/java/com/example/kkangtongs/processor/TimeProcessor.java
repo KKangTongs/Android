@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 
 public class TimeProcessor {
 
+    public static String time;
+
     public static String getTime() {
         // 현재 시간 세팅
         LocalTime now = LocalTime.now();
@@ -21,9 +23,13 @@ public class TimeProcessor {
         int hour = now.getHour();
         int minute = now.getMinute();
 
-        String time = String.format("%02d:%02d", hour, minute);
+        time = String.format("%02d:%02d", hour, minute);
 
         return time;
+    }
+
+    public static void setTime(String newTime) {
+        time = newTime;
     }
 
 }
