@@ -38,7 +38,7 @@ public class LectureRoomFragment extends Fragment {
     private TextView timeInfo;
     public String time;
 
-    final List<String> tabElement = Arrays.asList("AI공학관", "비전타워", "산학협력관2", "가천관", "바이오나노대학");
+    final List<String> tabElement = Arrays.asList("AI공학관", "비전타워", "산학협력관", "가천관", "바이오나노대학");
 
     @Nullable
     @Override

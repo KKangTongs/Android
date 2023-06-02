@@ -44,10 +44,12 @@ public class GachongwanFragment extends Fragment {
     ArrayList<RoomItem> roomData_8f = new ArrayList<>();
     ArrayList<RoomItem> roomData_9f = new ArrayList<>();
 
+    ArrayList<RoomItem> gachon_gwan = new ArrayList<>();
+
     SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 //    public String currentTime = dateFormat.format(new Date());
     String currentTime = TimeProcessor.getTime();
-
+    int currentDayOfWeek;
 
     @Nullable
     @Override
@@ -59,7 +61,10 @@ public class GachongwanFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(currentDate);
 
-        int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+        // RoomItemProcessor 클래스를 사용하여 가천관 정보만 읽어오기
+        gachon_gwan = RoomItemProcessor.roomNameToRoomArray(getContext(), "가천관");
 
         // 층별 화살표
         arrow_b2 = (ImageView) rootView.findViewById(R.id.gachongwan_B2_iv);
@@ -90,265 +95,9 @@ public class GachongwanFragment extends Fragment {
         // RecyclerView & Adapter 관련 코드
         initRecyclerView();
 
-        ArrayList<RoomItem> gachon_gwan = RoomItemProcessor.roomNameToRoomArray(getContext(), "가천관");
+        // 설정된 시간에 따른 층별 강의실 정보 업데이트
+        setRoomList(currentTime);
 
-        for(RoomItem roomItem : gachon_gwan) {
-            if (!roomItem.getBuildingName().equals("가천관")){
-                continue;
-            }
-            if (currentDayOfWeek != getDayOfWeek(roomItem.getDay())) { // 오늘 수업 아닌 경우
-                boolean included = false;
-
-                for (RoomItem rd : roomData_1f){ // 이미 데이터 있으면 break
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_2f){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_3f){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_4f){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_5f){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_6f){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_7f){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_8f){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_9f){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_b1){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-                for (RoomItem rd : roomData_b2){
-                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
-                        included = true;
-                        break;
-                    }
-                }
-
-                if (!included){
-
-                    roomItem.setRemainTime(9999);
-                    if (roomItem.getRoomNumber().startsWith("1")){
-                        roomData_1f.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("2")){
-                        roomData_2f.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("3")){
-                        roomData_3f.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("4")){
-                        roomData_4f.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("5")){
-                        roomData_5f.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("6")){
-                        roomData_6f.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("7")){
-                        roomData_7f.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("8")){
-                        roomData_8f.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("9")){
-                        roomData_9f.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("B1")){
-                        roomData_b1.add(roomItem);
-                    }else if(roomItem.getRoomNumber().startsWith("B2")){
-                        roomData_b2.add(roomItem);
-                    }
-
-                }
-
-
-            }
-        }
-
-        for(RoomItem roomItem : gachon_gwan) {
-            if (!roomItem.getBuildingName().equals("가천관")){
-                continue;
-            }
-            try {
-                if (currentDayOfWeek == getDayOfWeek(roomItem.getDay())) {
-                    if (roomItem.isInclass() || roomItem.getTime().equals("")) { // 수업 중이거나 시간 없는 수업이면 continue
-                        continue;
-                    }
-                    if (isWithinRange(currentTime, roomItem.getTime()) || isAfterRange(currentTime, roomItem.getTime())) { // 현재 수업중
-                        roomItem.setInclass(true);
-                    } else {
-                        boolean included = false;
-
-                        for (RoomItem rd : roomData_1f) {// 이미 1층에 있는 경우
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_2f) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_3f) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_4f) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_5f) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_6f) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_7f) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_8f) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_9f) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_b1) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-                        for (RoomItem rd : roomData_b2) {
-                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
-                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-                                }
-                                included = true;
-                                break;
-                            }
-                        }
-
-                        if (included) {
-                            continue;
-                        }
-
-                        roomItem.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
-
-                        if (roomItem.getRoomNumber().startsWith("1")) {
-                            roomData_1f.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("2")) {
-                            roomData_2f.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("3")) {
-                            roomData_3f.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("4")) {
-                            roomData_4f.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("5")) {
-                            roomData_5f.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("6")) {
-                            roomData_6f.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("7")) {
-                            roomData_7f.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("8")) {
-                            roomData_8f.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("9")) {
-                            roomData_9f.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("B1")) {
-                            roomData_b1.add(roomItem);
-                        } else if (roomItem.getRoomNumber().startsWith("B2")) {
-                            roomData_b2.add(roomItem);
-                        }
-                    }
-                }
-
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        }
 
 
         // 층별 화살표에 대한 Click Listener
@@ -805,7 +554,265 @@ public class GachongwanFragment extends Fragment {
     }
 
 
-    private void setRoomList() {
+    private void setRoomList(String currentTime) {
+
+        for(RoomItem roomItem : gachon_gwan) {
+            if (!roomItem.getBuildingName().equals("가천관")){
+                continue;
+            }
+            if (currentDayOfWeek != getDayOfWeek(roomItem.getDay())) { // 오늘 수업 아닌 경우
+                boolean included = false;
+
+                for (RoomItem rd : roomData_1f){ // 이미 데이터 있으면 break
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_2f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_3f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_4f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_5f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_6f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_7f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_8f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_9f){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_b1){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+                for (RoomItem rd : roomData_b2){
+                    if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                        included = true;
+                        break;
+                    }
+                }
+
+                if (!included){
+
+                    roomItem.setRemainTime(9999);
+                    if (roomItem.getRoomNumber().startsWith("1")){
+                        roomData_1f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("2")){
+                        roomData_2f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("3")){
+                        roomData_3f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("4")){
+                        roomData_4f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("5")){
+                        roomData_5f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("6")){
+                        roomData_6f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("7")){
+                        roomData_7f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("8")){
+                        roomData_8f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("9")){
+                        roomData_9f.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("B1")){
+                        roomData_b1.add(roomItem);
+                    }else if(roomItem.getRoomNumber().startsWith("B2")){
+                        roomData_b2.add(roomItem);
+                    }
+
+                }
+
+
+            }
+        }
+
+        for(RoomItem roomItem : gachon_gwan) {
+            if (!roomItem.getBuildingName().equals("가천관")){
+                continue;
+            }
+            try {
+                if (currentDayOfWeek == getDayOfWeek(roomItem.getDay())) {
+                    if (roomItem.isInclass() || roomItem.getTime().equals("")) { // 수업 중이거나 시간 없는 수업이면 continue
+                        continue;
+                    }
+                    if (isWithinRange(currentTime, roomItem.getTime()) || isAfterRange(currentTime, roomItem.getTime())) { // 현재 수업중
+                        roomItem.setInclass(true);
+                    } else {
+                        boolean included = false;
+
+                        for (RoomItem rd : roomData_1f) {// 이미 1층에 있는 경우
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_2f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_3f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_4f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_5f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_6f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_7f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_8f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_9f) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_b1) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+                        for (RoomItem rd : roomData_b2) {
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                    rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+                                }
+                                included = true;
+                                break;
+                            }
+                        }
+
+                        if (included) {
+                            continue;
+                        }
+
+                        roomItem.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+
+                        if (roomItem.getRoomNumber().startsWith("1")) {
+                            roomData_1f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("2")) {
+                            roomData_2f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("3")) {
+                            roomData_3f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("4")) {
+                            roomData_4f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("5")) {
+                            roomData_5f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("6")) {
+                            roomData_6f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("7")) {
+                            roomData_7f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("8")) {
+                            roomData_8f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("9")) {
+                            roomData_9f.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("B1")) {
+                            roomData_b1.add(roomItem);
+                        } else if (roomItem.getRoomNumber().startsWith("B2")) {
+                            roomData_b2.add(roomItem);
+                        }
+                    }
+                }
+
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         // 데이터 변경사항 알리는 코드
         adapter_b2.notifyDataSetChanged();

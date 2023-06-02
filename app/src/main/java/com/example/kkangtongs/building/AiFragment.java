@@ -81,7 +81,7 @@ public class AiFragment extends Fragment {
         initRecyclerView();
 
         // 설정된 시간에 따른 층별 강의실 정보 업데이트
-        setRoomList();
+        setRoomList(currentTime);
 
 
         // 층별 화살표에 대한 Click Listener
@@ -159,7 +159,7 @@ public class AiFragment extends Fragment {
     }
 
     // 층별 강의실의 남은 시간 정보
-    private void setRoomList() {
+    private void setRoomList(String currentTime) {
         for(RoomItem roomItem : ai_gwan) {
 
             if (currentDayOfWeek != getDayOfWeek(roomItem.getDay())) { // 오늘 수업 아닌 경우
@@ -299,6 +299,13 @@ public class AiFragment extends Fragment {
                 throw new RuntimeException(e);
             }
         }
+
+        // 데이터 변경사항 알리는 코드
+        adapter_1f.notifyDataSetChanged();
+        adapter_2f.notifyDataSetChanged();
+        adapter_3f.notifyDataSetChanged();
+        adapter_4f.notifyDataSetChanged();
+        adapter_5f.notifyDataSetChanged();
     }
 
     private boolean isAfterRange(String currentTime, String time) throws ParseException {
@@ -586,6 +593,9 @@ public class AiFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d("LIFECYCLE", "onResume");
+
+        // 등록된 time 변수를 currentTime에 저장하고 setRoomList() 실행
+        setRoomList(currentTime);
     }
 
     @Override
