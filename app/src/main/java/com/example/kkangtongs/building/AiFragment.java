@@ -563,7 +563,7 @@ public class AiFragment extends Fragment {
         Date startTimeObj = timeFormat.parse(startT);
         Date endTimeObj = timeFormat.parse(endT);
 
-        return currentTimeObj.after(startTimeObj) && currentTimeObj.before(endTimeObj);
+        return currentTimeObj.after(startTimeObj) && currentTimeObj.before(endTimeObj) || currentTimeObj.equals(endTimeObj);
     }
 
     @Override
