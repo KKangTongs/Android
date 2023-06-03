@@ -26,7 +26,7 @@
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
     <!-- (3) 섹터 안에 들어가는 버튼 스타일 (ex: "즐겨찾기 등록/해제") -->
