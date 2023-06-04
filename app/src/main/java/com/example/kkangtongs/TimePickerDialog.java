@@ -13,8 +13,6 @@ public class TimePickerDialog extends Dialog {
     private Context context;
     private TimePickerDialogListener timePickerDialogListener;
     private TimePicker timePicker;
-    private String text, title;
-    private int hourValue, minuteValue;
 
     private TextView positiveBtn, cancelBtn;
 

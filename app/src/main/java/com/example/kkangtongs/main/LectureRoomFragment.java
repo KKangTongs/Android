@@ -1,5 +1,7 @@
 package com.example.kkangtongs.main;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -98,6 +100,7 @@ public class LectureRoomFragment extends Fragment {
                     }
                 });
 
+                timeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));  //이 코드 없으면 다이얼로그 rounding 처리가 안됨
                 timeDialog.setCanceledOnTouchOutside(false);
                 timeDialog.setCancelable(true);
                 timeDialog.show();
