@@ -423,17 +423,57 @@ public class VisionTowerFragment extends Fragment {
 
             try {
                 if (currentDayOfWeek == getDayOfWeek(roomItem.getDay())) {
-                    if (roomItem.isInclass() || roomItem.getTime().equals("")) { // 수업 중이거나 시간 없는 수업이면 continue
-                        continue;
-                    }
-                    if (isWithinRange(currentTime, roomItem.getTime()) || isAfterRange(currentTime, roomItem.getTime())) { // 현재 수업중
+                    if (isWithinRange(currentTime, roomItem.getTime())) { // 현재 수업중
                         roomItem.setInclass(true);
 
-                    } else {
+                        for (RoomItem rd : roomData_1f){
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                                rd.setInclass(true);
+                            }
+                        }
+                        for (RoomItem rd : roomData_2f){
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                                rd.setInclass(true);
+                            }
+                        }
+                        for (RoomItem rd : roomData_3f){
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                                rd.setInclass(true);
+                            }
+                        }
+                        for (RoomItem rd : roomData_4f){
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                                rd.setInclass(true);
+                            }
+                        }
+                        for (RoomItem rd : roomData_5f){
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                                rd.setInclass(true);
+                            }
+                        }
+                        for (RoomItem rd : roomData_6f){
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                                rd.setInclass(true);
+                            }
+                        }
+                        for (RoomItem rd : roomData_b1){
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                                rd.setInclass(true);
+                            }
+                        }
+                        for (RoomItem rd : roomData_b2){
+                            if (rd.getRoomNumber().equals(roomItem.getRoomNumber())){
+                                rd.setInclass(true);
+                            }
+                        }
+
+                    } else if (!isAfterRange(currentTime, roomItem.getTime())){  // 수업시간 이전인 경우
+
                         boolean included = false;
 
                         for (RoomItem rd : roomData_1f) {// 이미 1층에 있는 경우
                             if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
+
                                 if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
                                     rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
                                 }
@@ -470,7 +510,7 @@ public class VisionTowerFragment extends Fragment {
                         }
                         for (RoomItem rd : roomData_5f) {
                             if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime()) && !rd.isInclass()) {
                                     rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
                                 }
                                 included = true;
@@ -479,7 +519,7 @@ public class VisionTowerFragment extends Fragment {
                         }
                         for (RoomItem rd : roomData_6f) {
                             if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime()) && !rd.isInclass()) {
                                     rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
                                 }
                                 included = true;
@@ -488,7 +528,7 @@ public class VisionTowerFragment extends Fragment {
                         }
                         for (RoomItem rd : roomData_b1) {
                             if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime()) && !rd.isInclass()) {
                                     rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
                                 }
                                 included = true;
@@ -497,7 +537,7 @@ public class VisionTowerFragment extends Fragment {
                         }
                         for (RoomItem rd : roomData_b2) {
                             if (rd.getRoomNumber().equals(roomItem.getRoomNumber())) {
-                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime())) {
+                                if (rd.getRemainTime() > getRemainTime(currentTime, roomItem.getTime()) && !rd.isInclass()) {
                                     rd.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
                                 }
                                 included = true;
@@ -505,11 +545,12 @@ public class VisionTowerFragment extends Fragment {
                             }
                         }
 
-                        if (included) {
+                        if (included || roomItem.isInclass()) {
                             continue;
                         }
 
                         roomItem.setRemainTime(getRemainTime(currentTime, roomItem.getTime()));
+
 
                         if (roomItem.getRoomNumber().startsWith("1")) {
                             roomData_1f.add(roomItem);
@@ -527,8 +568,6 @@ public class VisionTowerFragment extends Fragment {
                             roomData_b1.add(roomItem);
                         } else if (roomItem.getRoomNumber().startsWith("B2")) {
                             roomData_b2.add(roomItem);
-                        } else {
-                            roomData_b2.add(roomItem); // 예외처리 (체육관)
                         }
                     }
                 }

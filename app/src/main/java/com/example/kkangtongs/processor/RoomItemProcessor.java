@@ -178,6 +178,9 @@ public class RoomItemProcessor {
                     String[] dayTimePart = roomDayTime.split(" ,");
                     String dayTime1 = dayTimePart[0];
                     String dayTime2 = dayTimePart[1];
+                    String dayTime3 = null;
+                    if (dayTimePart.length != 2)
+                        dayTime3 = dayTimePart[2];
 
                     String day1 = dayTime1.substring(0, 1); // 수
                     String time1 = dayTime1.substring(1); // 1
@@ -185,11 +188,23 @@ public class RoomItemProcessor {
                     String day2 = dayTime2.substring(0, 1);
                     String time2 = dayTime2.substring(1);
 
+                    String day3 = null;
+                    String time3 = null;
+
+                    if (dayTimePart.length == 3) {
+                        day3 = dayTime3.substring(0, 1);
+                        time3 = dayTime3.substring(1);
+                    }
 
                     result.add(new RoomItem(roomName1, roomNumber1, day1, time1));
 
-                    result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
-
+                    if (day1.equals(day2)){
+                        result.add(new RoomItem(roomName1, roomNumber1, day2, time2));
+                    } else {
+                        result.add(new RoomItem(roomName2, roomNumber2, day2, time2));
+                    }
+                    if (dayTimePart.length == 3)
+                        result.add(new RoomItem(roomName2, roomNumber2, day3, time3));
 
                 } else { // 강의실 1개
 
