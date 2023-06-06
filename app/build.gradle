@@ -6,7 +6,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.kkangtongs"
+        applicationId "com.kkangtongs.kt"
         minSdk 26
         targetSdk 32
         versionCode 1
