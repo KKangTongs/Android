@@ -20,11 +20,11 @@ public class BuildingListRVAdapter extends RecyclerView.Adapter<BuildingListRVAd
         this.buildingList = newBuildingLIst;
     }
 
-
     @NonNull
     @Override
     public BuildingListRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_building_list, parent, false);
+
         return new ViewHolder(view);
     }
 

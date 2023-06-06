@@ -208,7 +208,7 @@
         android:overScrollMode="never"
         android:scrollbars="none"
         tools:listitem="@layout/item_blue_task"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
