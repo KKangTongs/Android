@@ -57,7 +57,6 @@ public class LectureRoomFragment extends Fragment {
         timeInfo = (TextView) rootView.findViewById(R.id.time_registerTime_tv);
 
         // 현재 시간으로 default 세팅
-//        time = TimeProcessor.getTime();
         time = TimeProcessor.getTime();
         timeInfo.setText(TimeProcessor.time);
 

@@ -52,6 +52,7 @@ public class BuildingListRVAdapter extends RecyclerView.Adapter<BuildingListRVAd
 
         void onBind(String newBuildingName) {
             buildingName.setText(newBuildingName);
+            emptyroomNum.setText("-");
         }
     }
 }
