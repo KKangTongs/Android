@@ -24,7 +24,8 @@
         android:id="@+id/blueHome_introGreeting2_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mobile Programming TermProject"
+        android:text="가천대학교의 비어있는 강의실을 찾아드립니다."
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@id/blueHome_introGreeting_tv"
         app:layout_constraintTop_toBottomOf="@id/blueHome_introGreeting_tv"
         android:textSize="15sp"/>
@@ -158,13 +159,25 @@
 
     </HorizontalScrollView>
 
+    <TextView
+        android:id="@+id/home_building_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="거리순 건물 정보"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/blueHome_introGreeting_tv"
+        app:layout_constraintTop_toBottomOf="@id/blueHome_menu_sv"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_buildingName_rv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/blueHome_menu_sv"
+        app:layout_constraintTop_toBottomOf="@id/home_building_tv"
+        android:layout_marginTop="20dp"
         android:overScrollMode="never"
         android:scrollbars="none"
         android:orientation="horizontal"
@@ -175,11 +188,11 @@
         android:id="@+id/blueHome_task_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="강의실"
+        android:layout_marginTop="30dp"
+        android:text="해당 건물 강의실"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/blueHome_introGreeting_tv"
         app:layout_constraintTop_toBottomOf="@id/home_buildingName_rv"/>
 
@@ -187,7 +200,7 @@
         android:id="@+id/blueHome_task_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/blueHome_task_tv"
