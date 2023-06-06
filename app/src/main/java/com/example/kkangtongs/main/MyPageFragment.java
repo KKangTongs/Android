@@ -30,7 +30,25 @@ public class MyPageFragment extends Fragment {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mypage, container, false);
 
+        // 1. 즐겨찾기 편집
+        Button editFavoritesButton = (Button) rootView.findViewById(R.id.editFavoritesButton);
+        editFavoritesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Snackbar.make(v, "준비중인 기능입니다!\n빠른 시일 내로 업데이트 하겠습니다 :)", Snackbar.LENGTH_LONG).show();
 
+            }
+        });
+
+        // 2. 건물 순서 편집
+        Button editBuildingOrderButton = (Button) rootView.findViewById(R.id.editBuildingOrderButton);
+        editBuildingOrderButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Snackbar.make(v, "준비중인 기능입니다!\n빠른 시일 내로 업데이트 하겠습니다 :)", Snackbar.LENGTH_LONG).show();
+
+            }
+        });
 
         // 3. 다크 모드
         sharedPreferences = getActivity().getSharedPreferences("appPreferences", Context.MODE_PRIVATE);
@@ -79,6 +97,16 @@ public class MyPageFragment extends Fragment {
                 // create and show the alert dialog
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            }
+        });
+
+        // 4. 알림설정
+        Button notificationSettingButton = (Button) rootView.findViewById(R.id.notificationSettingButton);
+        notificationSettingButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Snackbar.make(v, "준비중인 기능입니다!\n빠른 시일 내로 업데이트 하겠습니다 :)", Snackbar.LENGTH_LONG).show();
+
             }
         });
 
