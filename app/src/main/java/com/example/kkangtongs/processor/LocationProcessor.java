@@ -77,6 +77,8 @@ public class LocationProcessor {
         locations.add(createLocation("산학협력관2_(2)", 37.450782, 127.127310));
         locations.add(createLocation("AI관_(1)", 37.455372, 127.133354));
         locations.add(createLocation("AI관_(2)", 37.455170, 127.134294));
+        locations.add(createLocation("가천관_(1)", 37.45076609285893, 127.12977531763588));
+        locations.add(createLocation("가천관_(2)", 37.45007618295661, 127.12983700844076));
         locations.add(createLocation("바이오나노대학_(1)", 37.452805, 127.128711));
         locations.add(createLocation("바이오나노대학_(2)", 37.452381, 127.130057));
 
@@ -92,6 +94,26 @@ public class LocationProcessor {
 
         return locations;
     }
+
+    // 가장 가까운 위치들의 이름을 반환하는 메서드
+    public ArrayList<String> getNearestLocationsOnlyName() {
+        List<Location> locations = getNearestLocations();
+
+        ArrayList<String> locationNames = new ArrayList<>();
+
+        for (Location location : locations) {
+            String name = location.getProvider();
+            String locationName = name.split("_")[0];
+
+            if (!locationNames.contains(locationName)) {
+                locationNames.add(locationName);
+            }
+        }
+
+        return locationNames;
+
+    }
+
 
     // 이름, 위도, 경도를 이용하여 Location 객체를 생성하는 메서드
     private static Location createLocation(String name, double latitude, double longitude) {
