@@ -19,8 +19,10 @@
                 <TextView style="@style/myPageSectorTitle"
                     android:text="홈 화면 설정"/>
                 <Button style="@style/myPageButton"
+                    android:id="@+id/editFavoritesButton"
                     android:text="즐겨찾기 편집"/>
                 <Button style="@style/myPageButton"
+                    android:id="@+id/editBuildingOrderButton"
                     android:text="건물 순서 설정"/>
             </LinearLayout>
 
@@ -32,6 +34,7 @@
                     android:id="@+id/myPageDarkModeButton"
                     android:text="다크 모드"/>
                 <Button style="@style/myPageButton"
+                    android:id="@+id/notificationSettingButton"
                     android:text="알림 설정"/>
             </LinearLayout>
 
