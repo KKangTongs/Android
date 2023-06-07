@@ -61,7 +61,7 @@ public class MyPageFragment extends Fragment {
 
                 // add a radio button list
                 final String[] options = {"시스템 테마 적용", "다크 모드", "라이트 모드"};
-                int checkedItem = sharedPreferences.getInt("checkedItem", 0); // Get saved item index
+                int checkedItem = sharedPreferences.getInt("checkedItem", 2); // Get saved item index
                 builder.setSingleChoiceItems(options, checkedItem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -155,7 +155,7 @@ public class MyPageFragment extends Fragment {
             public void onClick(View view) {
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
                 emailIntent.setData(Uri.parse("mailto:"));
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"taeyeop303@gachon.ac.kr"});
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"kkangtongteams@gmail.com"});
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "[문의] 가천대 빈 강의실 ver 1.0.0");
                 startActivity(emailIntent);
             }
@@ -182,7 +182,7 @@ public class MyPageFragment extends Fragment {
 
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
                 emailIntent.setData(Uri.parse("mailto:"));
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"taeyeop303@gachon.ac.kr"});
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"kkangtongteams@gmail.com"});
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "[오류 제보] 가천대 빈 강의실 ver 1.0.0");
                 emailIntent.putExtra(Intent.EXTRA_TEXT, emailBody);
                 startActivity(emailIntent);
