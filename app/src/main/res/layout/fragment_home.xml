@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="안녕하세요, 깡통 팀입니다."
-        android:textColor="@color/black"
+        android:textColor="@color/bigword_back"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,139 +25,147 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="가천대학교의 비어있는 강의실을 찾아드립니다."
+        android:textColor="@color/smallword_gray"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@id/blueHome_introGreeting_tv"
         app:layout_constraintTop_toBottomOf="@id/blueHome_introGreeting_tv"
         android:textSize="15sp"/>
 
-    <HorizontalScrollView
-        android:id="@+id/blueHome_menu_sv"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:overScrollMode="never"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+<!--    <HorizontalScrollView-->
+<!--        android:id="@+id/blueHome_menu_sv"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:overScrollMode="never"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/blueHome_introGreeting2_tv"-->
+<!--        android:scrollbars="none">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/blueHome_category1_cv"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                app:cardCornerRadius="20dp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/blueHome_category2_cv"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:layout_marginStart="20dp">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="AI 공학관"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/blueHome_category2_cv"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                app:cardCornerRadius="20dp"-->
+<!--                app:layout_constraintStart_toEndOf="@id/blueHome_category1_cv"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/blueHome_category3_cv"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:layout_marginStart="20dp">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="비전타워"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/blueHome_category3_cv"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                app:cardCornerRadius="20dp"-->
+<!--                app:layout_constraintStart_toEndOf="@id/blueHome_category2_cv"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/blueHome_category4_cv"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:layout_marginStart="20dp">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="산학협력관"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/blueHome_category4_cv"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                app:cardCornerRadius="20dp"-->
+<!--                app:layout_constraintStart_toEndOf="@id/blueHome_category3_cv"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/blueHome_category5_cv"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:layout_marginStart="20dp">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="가천관"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/blueHome_category5_cv"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                app:cardCornerRadius="20dp"-->
+<!--                app:layout_constraintStart_toEndOf="@id/blueHome_category4_cv"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginEnd="20dp">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="바이오나노대학"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    </HorizontalScrollView>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line"
         app:layout_constraintTop_toBottomOf="@id/blueHome_introGreeting2_tv"
-        android:scrollbars="none">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/blueHome_category1_cv"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/blueHome_category2_cv"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AI 공학관"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/blueHome_category2_cv"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintStart_toEndOf="@id/blueHome_category1_cv"
-                app:layout_constraintEnd_toStartOf="@id/blueHome_category3_cv"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="비전타워"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/blueHome_category3_cv"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintStart_toEndOf="@id/blueHome_category2_cv"
-                app:layout_constraintEnd_toStartOf="@id/blueHome_category4_cv"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="산학협력관"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/blueHome_category4_cv"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintStart_toEndOf="@id/blueHome_category3_cv"
-                app:layout_constraintEnd_toStartOf="@id/blueHome_category5_cv"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="가천관"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"/>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/blueHome_category5_cv"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintStart_toEndOf="@id/blueHome_category4_cv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="바이오나노대학"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"/>
-
-            </androidx.cardview.widget.CardView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </HorizontalScrollView>
+        android:layout_marginTop="30dp"/>
 
     <TextView
         android:id="@+id/home_building_tv"
@@ -165,10 +173,11 @@
         android:layout_height="wrap_content"
         android:text="거리순 건물 정보"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/bigword_back"
         android:textSize="18sp"
+        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="@id/blueHome_introGreeting_tv"
-        app:layout_constraintTop_toBottomOf="@id/blueHome_menu_sv"/>
+        app:layout_constraintTop_toBottomOf="@id/blueHome_introGreeting2_tv"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_buildingName_rv"
@@ -191,7 +200,7 @@
         android:layout_marginTop="30dp"
         android:text="해당 건물 강의실"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/bigword_back"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/blueHome_introGreeting_tv"
         app:layout_constraintTop_toBottomOf="@id/home_buildingName_rv"/>

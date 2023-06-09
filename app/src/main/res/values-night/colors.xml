@@ -17,20 +17,20 @@
     <color name="space_item">#554A97</color>
 
     // blue theme
-    <color name="blue_Background">#EFF3FF</color>
+    <color name="blue_Background">#FF000000</color>
     <color name="blue_Main">#5E40F8</color>
     <color name="blue_violet">#9385FF</color>
     <color name="violet_transparent">#1A9385FF</color>
 
     // 다크모드 관련 색상
-    <color name="line">#E8E8E8</color>
-    <color name="bigword_back">#FF000000</color>
-    <color name="smallword_gray">#777777</color>
+    <color name="line">#494949</color>
+    <color name="bigword_back">#FFFFFFFF</color>
+    <color name="smallword_gray">#DFDFDF</color>
 
-    <color name="item_background">#FFFFFFFF</color>
-    <color name="item_bigword">#FF000000</color>
-    <color name="item_smallword">#777777</color>
+    <color name="item_background">#444444</color>
+    <color name="item_bigword">#FFFFFFFF</color>
+    <color name="item_smallword">#DFDFDF</color>
 
-    <color name="mypage_background">#FFFFFFFF</color>
+    <color name="mypage_background">#FF000000</color>
 
 </resources>

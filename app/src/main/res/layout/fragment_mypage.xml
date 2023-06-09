@@ -32,7 +32,7 @@
                     android:text="애플리케이션 설정"/>
                 <Button style="@style/myPageButton"
                     android:id="@+id/myPageDarkModeButton"
-                    android:text="다크 모드"/>
+                    android:text="테마 설정"/>
                 <Button style="@style/myPageButton"
                     android:id="@+id/notificationSettingButton"
                     android:text="알림 설정"/>

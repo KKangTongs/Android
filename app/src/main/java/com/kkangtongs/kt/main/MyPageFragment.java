@@ -57,7 +57,7 @@ public class MyPageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("다크 모드");
+                builder.setTitle("테마 설정");
 
                 // add a radio button list
                 final String[] options = {"시스템 테마 적용", "다크 모드", "라이트 모드"};

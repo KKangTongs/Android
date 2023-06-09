@@ -3,18 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="@drawable/rounding_item"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-<!--    <View-->
-<!--        android:id="@+id/rootItem_bar_vw"-->
-<!--        android:layout_width="3dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="@color/blue_violet"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        android:layout_marginStart="30dp"-->
-<!--        android:layout_marginEnd="10dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginBottom="10dp"/>-->
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="2dp">
 
     <TextView
         android:id="@+id/roomItem_roomNumber_tv"
@@ -22,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Room Number"
         android:textSize="15sp"
-        android:textColor="@color/black"
+        android:textColor="@color/item_bigword"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Building"
         android:textSize="13sp"
+        android:textColor="@color/item_smallword"
         app:layout_constraintTop_toBottomOf="@id/roomItem_roomNumber_tv"
         app:layout_constraintStart_toStartOf="@id/roomItem_roomNumber_tv"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Remain Time"
-        android:textColor="@color/black"
+        android:textColor="@color/item_bigword"
         android:textStyle="bold"
         android:textSize="15sp"
         android:background="@color/violet_transparent"
